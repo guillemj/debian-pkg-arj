@@ -1,0 +1,36 @@
+#DPATCHLEVEL=1
+diff -Naur arj-3.10.18.orig/environ.c arj-3.10.18/environ.c
+--- arj-3.10.18.orig/environ.c	2003-10-16 16:21:28.000000000 +0200
++++ arj-3.10.18/environ.c	2003-12-10 06:36:46.000000000 +0100
+@@ -54,11 +54,9 @@
+  #include <utime.h>
+  #include <sys/time.h>                  /* LIBC high-resolution timing */
+  #include <sys/resource.h>              /* Priority control */
+- /* For Linux-specific IOCTL. sys/statfs.h is no longer included,
+-    since struct statfs is duplicated in linux/fs.h */
+  #if defined(linux)
+-  #include <sys/ioctl.h>
+-  #include <linux/fs.h>
++  #include <sys/statfs.h>
++  #include <sys/statvfs.h>
+  #elif defined(__FreeBSD__)
+   #include <sys/param.h>
+   #include <sys/mount.h>
+@@ -3099,13 +3097,12 @@
+    return(bps*spclu);
+  #elif TARGET==UNIX
+   #ifdef linux
+-   int handle, rc, rci;
++   struct statvfs vfs;
+ 
+-   if((handle=open(name, O_RDONLY))==-1)
++   if(statvfs(name, &vfs)==-1)
+     return(512);
+-   rci=ioctl(handle, FIGETBSZ, &rc);
+-   close(handle);
+-   return(rci?512:rc);
++   else
++    return(vfs.f_bsize);
+   #else
+    return(512);
+   #endif

@@ -5,6 +5,12 @@ arj (3.10.18-2) unstable; urgency=low
   * Split diff patch:
     - 000_fPIC.patch
     - 001_arches_align.patch
+  * Added patch:
+    - 002_statsfs.patch: Include sys/statfs.h as it's not included in new
+      linux kernel header linux/fs.h. (Closes: #223135)
+      Thanks to Peter Hawkins <peter@hawkins.emu.id.au>.
+      Also switch from FIGETBSZ ioctl to statvfs, thus removing any linux
+      kernel header includes, that are breaking almost all builds lately.
   * Use debian/patch.mk.
   * Upgrade debhelper version to match DH_COMPAT.
   * Move autotools update to an independent target.
