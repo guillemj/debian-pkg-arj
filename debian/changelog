@@ -3,9 +3,10 @@ arj (3.10.19-2) unstable; urgency=low
   * Added patches:
     - 001_arches_align.patch: Correct build failure on ia64 due to unaligned
       memory access.
-    - 003_fix_CFLAGS.patch: Allow user to override CFLAGS.
     - 004_fix_warnings.patch: Fix compilation warnings.
-  * debian/rules: Allow user to override CFLAGS.
+  * Allow user to override CFLAGS:
+    - debian/rules: Likewise.
+    - 003_fix_CFLAGS.patch: New patch. Likewise.
   * debian/copyright: Added "License:".
 
  -- Guillem Jover <guillem@debian.org>  Tue,  6 Apr 2004 12:59:27 +0200
