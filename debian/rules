@@ -78,7 +78,7 @@ clean::
 	
 	dh_clean
 
-install: build
+install-arch: build
 	dh_testdir
 	dh_testroot
 	dh_clean -k
@@ -86,14 +86,16 @@ install: build
 	
 	$(MAKE) install DESTDIR=$(DESTDIR)
 	$(INSTALL_DATA) $(CURDIR)/resource/rearj.cfg.example $(DESTDIR)/etc/rearj.cfg
+
+install-indep:
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+	
 	$(INSTALL_SCRIPT) $(CURDIR)/debian/unarj.sh $(DESTDIR_unarj)/usr/bin/unarj
 
-# Build architecture-independent files here.
-binary-indep: build install
-	# We have nothing to do.
-
-# Build architecture-dependent files here.
-binary-arch: build install
+binary-common:
 	dh_testdir
 	dh_testroot
 #	dh_installdebconf
@@ -123,6 +125,16 @@ binary-arch: build install
 	dh_md5sums
 	dh_builddeb
 
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install configure
+# Build architecture-independent files here.
+binary-indep: install-indep
+	$(MAKE) -f debian/rules DH_OPTIONS=-i binary-common
+
+# Build architecture-dependent files here.
+binary-arch: install-arch
+	$(MAKE) -f debian/rules DH_OPTIONS=-a binary-common
+
+binary: binary-arch binary-indep
+
+.PHONY: clean configure build install-arch install-indep
+.PHONY: binary-common binary-indep binary-arch binary
 
