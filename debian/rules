@@ -1,0 +1,120 @@
+#!/usr/bin/make -f
+# Sample debian/rules that uses debhelper.
+# GNU copyright 1997 to 1999 by Joey Hess.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DESTDIR=$(CURDIR)/debian/arj
+
+INSTALL=install
+INSTALL_PROGRAM=$(INSTALL) -m 755
+INSTALL_SCRIPT=$(INSTALL) -m 755
+INSTALL_DATA=$(INSTALL) -m 644
+
+CFLAGS = -Wall -g
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+	CFLAGS += -O0
+else
+	CFLAGS += -O2
+endif
+
+# [Note-nostrip] Do not strip, it is currently done in the linker stage.
+# Otherwise when stripping the self-extracting modules and the help text
+# are removed
+#ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
+#	INSTALL_PROGRAM += -s
+#endif
+
+include debian/patch.mk
+
+pre-build:: configure-stamp
+
+configure-stamp: gnu/configure
+	dh_testdir
+
+	( \
+	cd gnu; \
+	autoconf; \
+	./configure \
+		--prefix=/usr \
+		--mandir=\$${prefix}/share/man \
+		--host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) \
+	)
+	touch configure-stamp
+
+update-autoconfig:
+	-test -r /usr/share/misc/config.sub && \
+	  cp -f /usr/share/misc/config.sub gnu/config.sub
+	-test -r /usr/share/misc/config.guess && \
+	  cp -f /usr/share/misc/config.guess gnu/config.guess
+
+build: build-stamp
+build-stamp: pre-build
+	dh_testdir
+
+	$(MAKE) prepare
+	$(MAKE)
+
+	touch build-stamp
+
+clean::
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp configure-stamp
+
+	-$(MAKE) clean
+	-rm -f gnu/{configure,config.{status,log,cache}}
+	-rm -rf gnu/autom4te.cache
+	-rm -f c_defs.h GNUmakefile
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	$(MAKE) install DESTDIR=$(DESTDIR)
+	$(INSTALL_DATA) $(CURDIR)/resource/rearj.cfg.example $(DESTDIR)/etc/rearj.cfg
+
+# Build architecture-independent files here.
+binary-indep: build install
+# We have nothing to do.
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+#	dh_installdebconf
+	dh_installdocs
+	dh_installexamples
+	dh_installmenu
+#	dh_installlogrotate
+#	dh_installemacsen
+#	dh_installpam
+#	dh_installmime
+#	dh_installinit
+	dh_installcron
+	dh_installman
+	dh_installinfo
+#	dh_undocumented
+	dh_installchangelogs ChangeLog
+	dh_link
+	# Do not strip (See [Note-nostrip])
+#	dh_strip
+	dh_compress
+	dh_fixperms
+#	dh_makeshlibs
+	dh_installdeb
+#	dh_perl
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install configure
+

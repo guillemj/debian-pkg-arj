@@ -1,0 +1,81 @@
+arj (3.10.18-2) #unreleased#; urgency=low
+
+  * Lowercase package description initial letter.
+  * Split diff patch:
+    - 000_fPIC.patch
+    - 001_arches_align.patch
+  * Use debian/patch.mk.
+  * Upgrade debhelper version to match DH_COMPAT.
+  * Move autotools update to an independent target.
+  * Move DH_COMPAT to debian/compat.
+
+ -- Guillem Jover <guillem@debian.org>  Tue, 11 Nov 2003 09:01:36 +0100
+
+arj (3.10.18-1) unstable; urgency=low
+
+  * New Upstream Release.
+    - Fixed unaligned memory accesses.
+  * Activate alignment support for ia64, hppa and arm.
+    (Closes: #203832, #192563)
+  * Build shared object with PIC flags.
+    Thanks Randolph Chung <tausq@debian.org>.
+  * debian/rules: Removed not used DDATE variable.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 23 Oct 2003 19:00:04 +0200
+
+arj (3.10.17-1) unstable; urgency=low
+
+  * New Upstream Release.
+  * debian/copyright: Reformatted.
+  * debian/rules: Changed misleading comment about stripping.
+  * Now using Standards-Version 3.6.1.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 18 Sep 2003 08:51:46 +0200
+
+arj (3.10.15-1) unstable; urgency=low
+
+  * New Upstream Release.
+  * Remove debian provided manpages as now they are integrated in upstream.
+  * Specify configure argument for mandir.
+  * Now using Standards-Version 3.6.0.
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 30 Jul 2003 05:30:28 +0200
+
+arj (3.10g-1) unstable; urgency=low
+
+  * New Co-Maintainer.
+  * New Upstream Version.
+  * Added a watch file.
+  * Added /etc/rearj.cfg (Closes: #180874).
+  * Added arj crypto module.
+  * Do not strip the binaries, as it removes all self-extracting modules and
+    the help text appended to arj binary.
+  * Converted man pages from pod to nroff, also adapted to Unix systems, and
+    removed the build-dep on perl.
+  * Removed temporal debian directory.
+  * Do not include autoconf generated files, they are created at build time.
+  * Fixed build system, now honours DESTDIR.
+  * Use Makefile to install, thus allowig to build under non-linux systems.
+  * Fixed join command returning an undefined exit code (Closes: #187854).
+  * Now using Standards-Version 3.5.9.
+
+ -- Guillem Jover <guillem@debian.org>  Wed,  9 Apr 2003 21:55:10 +0200
+
+arj (3.10b-3) unstable; urgency=low
+
+  * Fixed build problem, closes: #179820.
+
+ -- Ola Lundqvist <opal@debian.org>  Sun,  6 Apr 2003 14:01:09 +0200
+
+arj (3.10b-2) unstable; urgency=low
+
+  * Added more build dependencies, closes: #179691.
+
+ -- Ola Lundqvist <opal@debian.org>  Tue,  4 Feb 2003 07:51:08 +0100
+
+arj (3.10b-1) unstable; urgency=low
+
+  * Initial release, closes: #178488.
+
+ -- Ola Lundqvist <opal@debian.org>  Mon, 27 Jan 2003 19:47:51 +0100
+
