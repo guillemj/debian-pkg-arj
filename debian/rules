@@ -29,9 +29,10 @@ endif
 
 include debian/patch.mk
 
-pre-build:: configure-stamp
+pre-build:: configure
 
-configure-stamp: gnu/configure
+configure: configure-stamp
+configure-stamp:
 	dh_testdir
 
 	( \
