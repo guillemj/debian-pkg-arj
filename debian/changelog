@@ -1,3 +1,14 @@
+arj (3.10.19-1) unstable; urgency=low
+
+  * New Upstream Release.
+    - 000_fPIC.patch: Integrated upstream. Removed file.
+    - 001_arches_align.patch: Likewise.
+    - 002_statsfs.patch: Sync.
+  * Provide a migration path from the old non-free unarj package.
+    (Closes: #182273)
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 13 Mar 2004 04:58:36 +0100
+
 arj (3.10.18-3) unstable; urgency=low
 
   * The 'Happy New *RC*less Year' Release.

@@ -6,6 +6,7 @@
 #export DH_VERBOSE=1
 
 DESTDIR=$(CURDIR)/debian/arj
+DESTDIR_unarj=$(CURDIR)/debian/unarj
 
 INSTALL=install
 INSTALL_PROGRAM=$(INSTALL) -m 755
@@ -79,6 +80,7 @@ install: build
 	
 	$(MAKE) install DESTDIR=$(DESTDIR)
 	$(INSTALL_DATA) $(CURDIR)/resource/rearj.cfg.example $(DESTDIR)/etc/rearj.cfg
+	$(INSTALL_SCRIPT) $(CURDIR)/debian/unarj.sh $(DESTDIR_unarj)/usr/bin/unarj
 
 # Build architecture-independent files here.
 binary-indep: build install
