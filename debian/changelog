@@ -1,3 +1,12 @@
+arj (3.10.20-1) unstable; urgency=low
+
+  * New Upstream Release.
+    - 002_statsfs.patch: Integrated upstream. Patch removed.
+    - 003_fix_CFLAGS.patch: Likewise.
+    - 004_fix_warnings.patch: Likewise.
+
+ -- Guillem Jover <guillem@debian.org>  Tue, 27 Apr 2004 11:42:45 +0200
+
 arj (3.10.19-2) unstable; urgency=low
 
   * Added patches:
