@@ -7,7 +7,7 @@ diff -Naur arj-3.10.19.orig/arj_proc.c arj-3.10.19/arj_proc.c
  #endif
  
 -#if defined(WORDS_BIGENDIAN)&&!defined(ARJDISP)&&!defined(REGISTER)
-+#if defined(ALIGN_POINTERS)&&!defined(ARJDISP)&&!defined(REGISTER)
++#if (defined(WORDS_BIGENDIAN) || defined(ALIGN_POINTERS)) && !defined(ARJDISP) && !defined(REGISTER)
  /* Model-independent routine to get 2 bytes from far RAM */
  
  unsigned int mget_word(char FAR *p)
@@ -19,7 +19,7 @@ diff -Naur arj-3.10.19.orig/arj_proc.h arj-3.10.19/arj_proc.h
  #define mget_byte(p) (*(unsigned char FAR *)(p)&0xFF)
  #define mput_byte(c, p) *(unsigned char FAR *)(p)=(unsigned char)(c)
 -#ifndef WORDS_BIGENDIAN
-+#ifndef ALIGN_POINTERS
++#if !defined(ALIGN_POINTERS) && !defined(WORDS_BIGENDIAN)
  #define mget_word(p) (*(unsigned short *)(p)&0xFFFF)
  #define mput_word(w,p) (*(unsigned short *)(p)=(unsigned short)(w))
  #define mget_dword(p) (*(unsigned long *)(p))
@@ -28,7 +28,7 @@ diff -Naur arj-3.10.19.orig/arj_proc.h arj-3.10.19/arj_proc.h
  void strip_lf(char *str);
  char *ltrim(char *str);
 -#ifdef WORDS_BIGENDIAN
-+#ifdef ALIGN_POINTERS
++#if defined(ALIGN_POINTERS) || defined(WORDS_BIGENDIAN)
  unsigned int mget_word(char FAR *p);
  unsigned long mget_dword(char FAR *p);
  void mput_word(unsigned int w, char FAR *p);
