@@ -4,6 +4,8 @@ arj (3.10.21-1) unstable; urgency=low
   * Provide a patch target instead of pre-build.
     - debian/patch.mk: Likewise.
     - debian/rules: Fix accordingly.
+  * Added the location of the Subversion repo used for the packages.
+    - debian/copyright.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 27 Jun 2004 08:07:09 +0200
 
