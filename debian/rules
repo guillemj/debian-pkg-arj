@@ -90,7 +90,7 @@ install: build
 
 # Build architecture-independent files here.
 binary-indep: build install
-# We have nothing to do.
+	# We have nothing to do.
 
 # Build architecture-dependent files here.
 binary-arch: build install
