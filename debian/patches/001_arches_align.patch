@@ -1,0 +1,92 @@
+diff -Naur arj-3.10.19/arj_proc.c arj-3.10.19.patched/arj_proc.c
+--- arj-3.10.19/arj_proc.c	2004-02-20 14:18:52.000000000 +0100
++++ arj-3.10.19.patched/arj_proc.c	2004-04-02 04:10:44.000000000 +0200
+@@ -2863,7 +2863,7 @@
+ }
+ #endif
+ 
+-#if defined(WORDS_BIGENDIAN)&&!defined(ARJDISP)&&!defined(REGISTER)
++#if !defined(ARJDISP)&&!defined(REGISTER)
+ /* Model-independent routine to get 2 bytes from far RAM */
+ 
+ unsigned int mget_word(char FAR *p)
+@@ -2872,7 +2872,12 @@
+ 
+  b0=mget_byte(p);
+  b1=mget_byte(p+1);
++
++#ifdef WORDS_BIGENDIAN
+  return (b1<<8)|b0;
++#else
++ return (b0<<8)|b1;
++#endif
+ }
+ 
+ /* Model-independent routine to get 4 bytes from far RAM */
+@@ -2883,22 +2888,37 @@
+ 
+  w0=mget_word(p);
+  w1=mget_word(p+2);
++
++#ifdef WORDS_BIGENDIAN
+  return (w1<<16)|w0;
++#else
++ return (w0<<16)|w1;
++#endif
+ }
+ 
+ /* Model-independent routine to store 2 bytes in far RAM */
+ 
+ void mput_word(unsigned int w, char FAR *p)
+ {
++#ifdef WORDS_BIGENDIAN
+  mput_byte(w&0xFF, p);
+  mput_byte(w>>8  , p+1);
++#else
++ mput_byte(w>>8  , p);
++ mput_byte(w&0xFF, p+1);
++#endif
+ }
+ 
+ /* Model-independent routine to store 4 bytes in far RAM */
+ 
+ void mput_dword(unsigned long d, char FAR *p)
+ {
++#ifdef WORDS_BIGENDIAN
+  mput_word(d&0xFFFF, p);
+  mput_word(d>>16   , p+2);
++#else
++ mput_word(d>>16   , p);
++ mput_word(d&0xFFFF, p+2);
++#endif
+ }
+ #endif
+diff -Naur arj-3.10.19/arj_proc.h arj-3.10.19.patched/arj_proc.h
+--- arj-3.10.19/arj_proc.h	2004-01-25 01:40:00.000000000 +0100
++++ arj-3.10.19.patched/arj_proc.h	2004-04-02 04:05:34.000000000 +0200
+@@ -12,12 +12,6 @@
+ 
+ #define mget_byte(p) (*(unsigned char FAR *)(p)&0xFF)
+ #define mput_byte(c, p) *(unsigned char FAR *)(p)=(unsigned char)(c)
+-#ifndef WORDS_BIGENDIAN
+-#define mget_word(p) (*(unsigned short *)(p)&0xFFFF)
+-#define mput_word(w,p) (*(unsigned short *)(p)=(unsigned short)(w))
+-#define mget_dword(p) (*(unsigned long *)(p))
+-#define mput_dword(w,p) (*(unsigned long *)(p)=(unsigned long)(w))
+-#endif
+ 
+ /* Prototypes */
+ 
+@@ -60,12 +54,10 @@
+ void unpack_mem(struct mempack *mempack);
+ void strip_lf(char *str);
+ char *ltrim(char *str);
+-#ifdef WORDS_BIGENDIAN
+ unsigned int mget_word(char FAR *p);
+ unsigned long mget_dword(char FAR *p);
+ void mput_word(unsigned int w, char FAR *p);
+ void mput_dword(unsigned long d, char FAR *p);
+-#endif
+ 
+ #endif
+ 
