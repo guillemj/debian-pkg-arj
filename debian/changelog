@@ -6,6 +6,7 @@ arj (3.10.20-1) unstable; urgency=low
     - 004_fix_warnings.patch: Likewise.
   * Build binary independent packages only in binary-indep target.
     (Closes: #244395)
+  * debian/copyright: Updated copyright year.
 
  -- Guillem Jover <guillem@debian.org>  Tue, 27 Apr 2004 11:42:45 +0200
 
