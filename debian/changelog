@@ -1,5 +1,6 @@
-arj (3.10.18-2) #unreleased#; urgency=low
+arj (3.10.18-2) unstable; urgency=low
 
+  * Switched Maintainer and Co-Maintainer roles.
   * Lowercase package description initial letter.
   * Split diff patch:
     - 000_fPIC.patch
@@ -9,7 +10,7 @@ arj (3.10.18-2) #unreleased#; urgency=low
   * Move autotools update to an independent target.
   * Move DH_COMPAT to debian/compat.
 
- -- Guillem Jover <guillem@debian.org>  Tue, 11 Nov 2003 09:01:36 +0100
+ -- Guillem Jover <guillem@debian.org>  Wed, 10 Dec 2003 05:14:30 +0100
 
 arj (3.10.18-1) unstable; urgency=low
 
