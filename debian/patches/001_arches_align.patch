@@ -1,3 +1,4 @@
+#DPATCHLEVEL=1
 diff -Naur arj-3.10.19/arj_proc.c arj-3.10.19.patched/arj_proc.c
 --- arj-3.10.19/arj_proc.c	2004-02-20 14:18:52.000000000 +0100
 +++ arj-3.10.19.patched/arj_proc.c	2004-04-02 04:10:44.000000000 +0200
