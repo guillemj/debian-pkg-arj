@@ -34,7 +34,7 @@ pre-build:: configure
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-
+	
 	( \
 	cd gnu; \
 	autoconf; \
@@ -45,31 +45,30 @@ configure-stamp:
 	)
 	touch configure-stamp
 
-update-autoconfig:
-	-test -r /usr/share/misc/config.sub && \
-	  cp -f /usr/share/misc/config.sub gnu/config.sub
-	-test -r /usr/share/misc/config.guess && \
-	  cp -f /usr/share/misc/config.guess gnu/config.guess
-
 build: build-stamp
 build-stamp: pre-build
 	dh_testdir
-
+	
 	$(MAKE) prepare
 	$(MAKE)
-
+	
 	touch build-stamp
 
 clean::
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
-
+	
 	-$(MAKE) clean
 	-rm -f gnu/{configure,config.{status,log,cache}}
 	-rm -rf gnu/autom4te.cache
 	-rm -f c_defs.h GNUmakefile
-
+	
+	-test -r /usr/share/misc/config.sub && \
+	  cp -fu /usr/share/misc/config.sub gnu/config.sub
+	-test -r /usr/share/misc/config.guess && \
+	  cp -fu /usr/share/misc/config.guess gnu/config.guess
+	
 	dh_clean
 
 install: build
@@ -77,7 +76,7 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-
+	
 	$(MAKE) install DESTDIR=$(DESTDIR)
 	$(INSTALL_DATA) $(CURDIR)/resource/rearj.cfg.example $(DESTDIR)/etc/rearj.cfg
 

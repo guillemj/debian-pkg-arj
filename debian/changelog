@@ -1,3 +1,11 @@
+arj (3.10.18-3) unstable; urgency=low
+
+  * The 'Happy New *RC*less Year' Release.
+  * Moved autotools updating logic to the clean target, but only update
+    the files. (Closes: #225688)
+
+ -- Guillem Jover <guillem@debian.org>  Thu,  1 Jan 2004 00:00:00 +0100
+
 arj (3.10.18-2) unstable; urgency=low
 
   * Switched Maintainer and Co-Maintainer roles.
