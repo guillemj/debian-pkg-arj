@@ -37,9 +37,7 @@ endif
 
 include debian/patch.mk
 
-pre-build:: configure
-
-configure: configure-stamp
+configure: patch configure-stamp
 configure-stamp:
 	dh_testdir
 	
@@ -53,8 +51,8 @@ configure-stamp:
 	)
 	touch configure-stamp
 
-build: build-stamp
-build-stamp: pre-build
+build: configure build-stamp
+build-stamp:
 	dh_testdir
 	
 	$(MAKE) CFLAGS="$(CFLAGS)" $(DEBUG)
