@@ -9,7 +9,7 @@ arj (3.10.19-2) unstable; urgency=low
     - 003_fix_CFLAGS.patch: New patch. Likewise.
   * debian/copyright: Added "License:".
 
- -- Guillem Jover <guillem@debian.org>  Tue,  6 Apr 2004 12:59:27 +0200
+ -- Guillem Jover <guillem@debian.org>  Fri,  9 Apr 2004 23:12:05 +0200
 
 arj (3.10.19-1) unstable; urgency=low
 
