@@ -51,18 +51,15 @@ configure-stamp:
 	)
 	touch configure-stamp
 
-build: configure build-stamp
-build-stamp:
+build: configure
 	dh_testdir
 	
 	$(MAKE) CFLAGS="$(CFLAGS)" $(DEBUG)
-	
-	touch build-stamp
 
 clean::
 	dh_testdir
 	dh_testroot
-	rm -f build-stamp configure-stamp
+	rm -f configure-stamp
 	
 	-$(MAKE) clean
 	-rm -f gnu/{configure,config.{status,log,cache}}
