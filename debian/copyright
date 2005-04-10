@@ -9,7 +9,7 @@ The upstream source was downloaded from:
 
 The debian packages are maintained through Subversion on:
 
-   <http://svn.debian.org/viewcvs/pkg-arj/>
+   <svn://svn.debian.org/pkg-arj/>
 
 Upstream Authors:
 
