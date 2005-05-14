@@ -1,7 +1,7 @@
 arj (3.10.21-3) UNRELEASED; urgency=low
 
   * Fix Subversion repository URL.
-  * Fix build failure on GNU/k*BSD.
+  * Fix build failure on GNU/k*BSD. (Closes: #303945)
     - 002_kbsd_build.patch: New.
     Thanks to Aurelien Jarno <aurel32@debian.org>.
 

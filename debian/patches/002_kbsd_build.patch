@@ -7,8 +7,8 @@
  	;;
 +k*bsd*)
 +	AC_DEFINE(ELF_EXECUTABLES)
-+        DYN_LIBS="-ldl"
-+        LD_STRIP="gnu/stripgcc.lnk"
++	DYN_LIBS="-ldl"
++	LD_STRIP="gnu/stripgcc.lnk"
 +	;;
  *bsd*)
  	AC_DEFINE(ELF_EXECUTABLES)
