@@ -1,4 +1,4 @@
-arj (3.10.21-3) UNRELEASED; urgency=low
+arj (3.10.21-3) unstable; urgency=low
 
   * Fix Subversion repository URL.
   * Fix build failure on GNU/k*BSD. (Closes: #303945)
@@ -8,7 +8,7 @@ arj (3.10.21-3) UNRELEASED; urgency=low
     (Closes: #283913)
   * Do not use a stamp file for configure.
 
- -- Guillem Jover <guillem@debian.org>  Mon, 11 Apr 2005 01:16:46 +0300
+ -- Guillem Jover <guillem@debian.org>  Sun, 15 May 2005 18:10:22 +0300
 
 arj (3.10.21-2) unstable; urgency=low
 
