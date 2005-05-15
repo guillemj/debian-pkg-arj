@@ -6,6 +6,7 @@ arj (3.10.21-3) UNRELEASED; urgency=low
     Thanks to Aurelien Jarno <aurel32@debian.org>.
   * Mark an unreferenced variable as const otherwise gcc 3.4 removes it.
     (Closes: #283913)
+  * Do not use a stamp file for configure.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 11 Apr 2005 01:16:46 +0300
 

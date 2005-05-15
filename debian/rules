@@ -37,8 +37,8 @@ endif
 
 include debian/patch.mk
 
-configure: patch configure-stamp
-configure-stamp:
+gnu/config.status: patch gnu/configure
+gnu/configure:
 	dh_testdir
 	
 	( \
@@ -49,9 +49,8 @@ configure-stamp:
 		--mandir=\$${prefix}/share/man \
 		--host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) \
 	)
-	touch configure-stamp
 
-build: configure
+build: gnu/config.status
 	dh_testdir
 	
 	$(MAKE) CFLAGS="$(CFLAGS)" $(DEBUG)
