@@ -1,0 +1,73 @@
+#DPATCHLEVEL=1
+diff -Naur arj-3.10.21.orig/doc/rev_hist.txt arj-3.10.21/doc/rev_hist.txt
+--- arj-3.10.21.orig/doc/rev_hist.txt	2004-06-18 16:18:18.000000000 +0300
++++ arj-3.10.21/doc/rev_hist.txt	2005-06-04 06:22:16.178735048 +0300
+@@ -150,7 +150,7 @@
+                           volume split files. Fixed a problem using "-js" in
+                           ARJ_SW/ARJ32_SW and on the command line. Changed the
+                           "l"ist command to show " 00" for year 2000 and "100"
+-                          for year 2100. Added a "-2k1" switch for non-ambigous
++                          for year 2100. Added a "-2k1" switch for non-ambiguous
+                           date formatting. Added "-hy1" and "-hy2" options to
+                           force OEM/ANSI codepage settings. Fixed garbling to
+                           accept "-hg" when garbling an existing ungarbled
+diff -Naur arj-3.10.21.orig/resource/en/arj.1 arj-3.10.21/resource/en/arj.1
+--- arj-3.10.21.orig/resource/en/arj.1	2004-02-21 01:19:00.000000000 +0200
++++ arj-3.10.21/resource/en/arj.1	2005-06-04 06:22:35.134853280 +0300
+@@ -782,7 +782,7 @@
+ .B 2k
+ Skip century display in dates
+ .RS
+-2k1: use a non-ambigous date display format
++2k1: use a non-ambiguous date display format
+ .RE
+ .TP
+ .B 2l
+diff -Naur arj-3.10.21.orig/resource/en/arjdisp.1 arj-3.10.21/resource/en/arjdisp.1
+--- arj-3.10.21.orig/resource/en/arjdisp.1	2003-04-18 11:12:40.000000000 +0300
++++ arj-3.10.21/resource/en/arjdisp.1	2005-06-04 06:23:55.913573048 +0300
+@@ -16,7 +16,7 @@
+ arjdisp \- ARJ simple graphical interface
+ .SH SYNOPSIS
+ .B arj
+-.RI [ test | airchive_name
++.RI [ test | archive_name
+ .I filename uncompsize bytes compsize
+ .IR cmd_verb ]
+ .SH DESCRIPTION
+diff -Naur arj-3.10.21.orig/resource/en/arjl.txt arj-3.10.21/resource/en/arjl.txt
+--- arj-3.10.21.orig/resource/en/arjl.txt	2004-06-18 19:44:34.000000000 +0300
++++ arj-3.10.21/resource/en/arjl.txt	2005-06-04 06:22:51.895305304 +0300
+@@ -260,7 +260,7 @@
+  2a: serialize names on extraction      2i: Ignore the first bytes of archive
+  2b: [UNIX] restrict to Block devices       2i512: begin from offset 512
+      2b or 2b.: current device only     2k: skip century display in dates        
+-     2b-/usr: all except where /usr is 2k1: use a non-ambigous date display      
++     2b-/usr: all except where /usr is 2k1: use a non-ambiguous date display     
+               located                       format                               
+  2c: [OS/2, NT] handle Crit. EAs only   2l: [OS/2, NT] treat .LONGNAME EAs as    
+  2d: ARJ/DOS compatibility mode             filenames when possible              
+diff -Naur arj-3.10.21.orig/resource/en/history.txt arj-3.10.21/resource/en/history.txt
+--- arj-3.10.21.orig/resource/en/history.txt	2004-06-18 19:44:50.000000000 +0300
++++ arj-3.10.21/resource/en/history.txt	2005-06-04 06:23:01.764804912 +0300
+@@ -199,7 +199,7 @@
+            command line.
+         *  Changed the  "l"ist  command to  show " 00" for  year  2000 and
+            "100" for year 2100.
+-        *  Added a "-2k1" switch for non-ambigous date formatting.
++        *  Added a "-2k1" switch for non-ambiguous date formatting.
+         *  Added  "-hy1"  and "-hy2" options  to force  OEM/ANSI  codepage
+            settings.
+         *  Fixed  garbling  to  accept  "-hg"  when  garbling an  existing
+diff -Naur arj-3.10.21.orig/resource/en/readme.txt arj-3.10.21/resource/en/readme.txt
+--- arj-3.10.21.orig/resource/en/readme.txt	2004-06-18 19:45:04.000000000 +0300
++++ arj-3.10.21/resource/en/readme.txt	2005-06-04 06:23:12.868116952 +0300
+@@ -147,7 +147,7 @@
+          helpful if the 3-digit  year format used for dates beyond 2100 is
+          confusing.
+ 
+-         Alternatively, "-2k1" uses a non-ambigous  format  that  is  both
++         Alternatively, "-2k1" uses a non-ambiguous  format  that is  both
+          easy to read and  information-packed.  The dates are  represented
+          by two digits if  the year  is 1970 to 2069, and in three  digits
+          if it's 2070 or beyond.

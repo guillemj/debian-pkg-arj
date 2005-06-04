@@ -1,3 +1,11 @@
+arj (3.10.21-4) unstable; urgency=low
+
+  * Fix typos in documentation. (Closes: #309875, #309876)
+    - 004_doc_typos.patch: New.
+    Thanks to A Costa <agcosta@gis.net>.
+
+ -- Guillem Jover <guillem@debian.org>  Sat,  4 Jun 2005 06:16:35 +0300
+
 arj (3.10.21-3) unstable; urgency=low
 
   * Fix Subversion repository URL.
