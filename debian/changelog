@@ -10,6 +10,7 @@ arj (3.10.22-1) UNRELEASED; urgency=low
   * Do not build integr.o with optimizations, otherwise gcc-4.0 removes
     the static const variable. (Closes: #318366)
     - 002_no_remove_static_const.patch: New file.
+  * Now using Standards-Version 3.6.2 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Fri, 15 Jul 2005 19:04:41 +0300
 
