@@ -79,8 +79,6 @@ install-arch: build
 	$(MAKE) install DESTDIR=$(DESTDIR)
 	$(INSTALL_DATA) $(CURDIR)/resource/rearj.cfg.example \
 			$(DESTDIR)/etc/rearj.cfg
-	$(INSTALL_SCRIPT) $(CURDIR)/debian/unarj.sh \
-			  $(DESTDIR)/usr/bin/unarj
 
 binary-common:
 	dh_testdir
