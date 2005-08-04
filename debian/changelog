@@ -1,4 +1,4 @@
-arj (3.10.22-1) UNRELEASED; urgency=low
+arj (3.10.22-1) unstable; urgency=low
 
   * New Upstream Release.
     - 001_arches_align.patch: Synced.
@@ -11,11 +11,10 @@ arj (3.10.22-1) UNRELEASED; urgency=low
     the static const variable. (Closes: #318366)
     - 002_no_remove_static_const.patch: New file.
   * Now using Standards-Version 3.6.2 (no changes needed).
-  * Lower case title header in unarj man page.
   * Removed transitional dummy package unarj.
   * Clean up debian/rules.
 
- -- Guillem Jover <guillem@debian.org>  Fri, 15 Jul 2005 19:04:41 +0300
+ -- Guillem Jover <guillem@debian.org>  Thu,  4 Aug 2005 23:00:51 +0300
 
 arj (3.10.21-4) unstable; urgency=low
 
