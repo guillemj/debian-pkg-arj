@@ -1,3 +1,13 @@
+arj (3.10.22-1) UNRELEASED; urgency=low
+
+  * New Upstream Release.
+    - 001_arches_align.patch: Synced.
+    - 002_kbsd_build.patch: Integrated upstream. Removed.
+    - 003_gcc34_static_const.patch: Likewise.
+    - 004_doc_typos.patch: Likewise.
+
+ -- Guillem Jover <guillem@debian.org>  Fri, 15 Jul 2005 19:04:41 +0300
+
 arj (3.10.21-4) unstable; urgency=low
 
   * Fix typos in documentation. (Closes: #309875, #309876)
