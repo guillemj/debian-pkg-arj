@@ -12,6 +12,7 @@ arj (3.10.22-1) UNRELEASED; urgency=low
     - 002_no_remove_static_const.patch: New file.
   * Now using Standards-Version 3.6.2 (no changes needed).
   * Lower case title header in unarj man page.
+  * Removed transitional dummy package unarj, moved the contents to arj.
 
  -- Guillem Jover <guillem@debian.org>  Fri, 15 Jul 2005 19:04:41 +0300
 

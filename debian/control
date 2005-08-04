@@ -15,14 +15,3 @@ Description: archiver for .arj files
  retain the feature set of original ARJ archiver as provided by
  ARJ Software, Inc.
 
-Package: unarj
-Architecture: all
-Depends: arj
-Description: transitional dummy package
- This is a transitional package to migrate from the non-free unarj
- package to the full arj free alternative, providing a simple wrapper
- to ease the migration. Once you have fixed all references to the unarj
- program, this packages can be safely removed.
- .
- This package may be removed after next release.
-

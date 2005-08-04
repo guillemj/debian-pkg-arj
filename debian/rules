@@ -80,13 +80,6 @@ install-arch: build
 	
 	$(MAKE) install DESTDIR=$(DESTDIR)
 	$(INSTALL_DATA) $(CURDIR)/resource/rearj.cfg.example $(DESTDIR)/etc/rearj.cfg
-
-install-indep:
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-	
 	$(INSTALL_SCRIPT) $(CURDIR)/debian/unarj.sh $(DESTDIR_unarj)/usr/bin/unarj
 
 binary-common:
@@ -120,8 +113,7 @@ binary-common:
 	dh_builddeb
 
 # Build architecture-independent files here.
-binary-indep: install-indep
-	$(MAKE) -f debian/rules DH_OPTIONS=-i binary-common
+binary-indep:
 
 # Build architecture-dependent files here.
 binary-arch: install-arch
@@ -129,6 +121,6 @@ binary-arch: install-arch
 
 binary: binary-arch binary-indep
 
-.PHONY: clean configure build install-arch install-indep
+.PHONY: clean configure build install-arch
 .PHONY: binary-common binary-indep binary-arch binary
 
