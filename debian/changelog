@@ -5,6 +5,8 @@ arj (3.10.22-1) UNRELEASED; urgency=low
     - 002_kbsd_build.patch: Integrated upstream. Removed.
     - 003_gcc34_static_const.patch: Likewise.
     - 004_doc_typos.patch: Likewise.
+  * Update watch file to version 3 (no changes needed).
+  * Use new QA SourceForge watch redirector.
 
  -- Guillem Jover <guillem@debian.org>  Fri, 15 Jul 2005 19:04:41 +0300
 
