@@ -1,5 +1,4 @@
 #!/usr/bin/make -f
-# Sample debian/rules that uses debhelper.
 # GNU copyright 1997 to 1999 by Joey Hess.
 
 # Uncomment this to turn on verbose mode.
@@ -79,8 +78,10 @@ install-arch: build
 	dh_installdirs
 	
 	$(MAKE) install DESTDIR=$(DESTDIR)
-	$(INSTALL_DATA) $(CURDIR)/resource/rearj.cfg.example $(DESTDIR)/etc/rearj.cfg
-	$(INSTALL_SCRIPT) $(CURDIR)/debian/unarj.sh $(DESTDIR_unarj)/usr/bin/unarj
+	$(INSTALL_DATA) $(CURDIR)/resource/rearj.cfg.example \
+			$(DESTDIR)/etc/rearj.cfg
+	$(INSTALL_SCRIPT) $(CURDIR)/debian/unarj.sh \
+			  $(DESTDIR_unarj)/usr/bin/unarj
 
 binary-common:
 	dh_testdir
@@ -89,33 +90,24 @@ binary-common:
 	dh_installdocs
 	dh_installexamples
 	dh_installmenu
-#	dh_installlogrotate
-#	dh_installemacsen
-#	dh_installpam
 #	dh_installmime
-#	dh_installinit
 	dh_installcron
 	dh_installman
 	dh_installinfo
-#	dh_undocumented
 	dh_installchangelogs ChangeLog
 	dh_link
 	# Do not strip (See [Note-nostrip])
 #	dh_strip
 	dh_compress
 	dh_fixperms
-#	dh_makeshlibs
 	dh_installdeb
-#	dh_perl
 	dh_shlibdeps
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb
 
-# Build architecture-independent files here.
 binary-indep:
 
-# Build architecture-dependent files here.
 binary-arch: install-arch
 	$(MAKE) -f debian/rules DH_OPTIONS=-a binary-common
 
