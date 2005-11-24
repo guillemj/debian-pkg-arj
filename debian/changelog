@@ -4,6 +4,7 @@ arj (3.10.22-2) UNRELEASED; urgency=low
     - 003_64_bit_clean.patch: New patch.
   * Remove unused INSTALL variables and move nostrip comment just before
     the commented dh_strip command from debian/rules.
+  * Reindent debian/copyright.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 24 Nov 2005 03:28:12 +0200
 
