@@ -7,8 +7,6 @@
 DESTDIR=$(CURDIR)/debian/arj
 
 INSTALL=install
-INSTALL_PROGRAM=$(INSTALL) -m 755
-INSTALL_SCRIPT=$(INSTALL) -m 755
 INSTALL_DATA=$(INSTALL) -m 644
 
 DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
@@ -21,13 +19,6 @@ ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 else
 	CFLAGS += -O2
 endif
-
-# [Note-nostrip] Do not strip, it is currently done in the linker stage.
-# Otherwise when stripping the self-extracting modules and the help text
-# are removed
-#ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-#	INSTALL_PROGRAM += -s
-#endif
 
 ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
 	DEBUG = "DEBUG=1"
@@ -93,7 +84,9 @@ binary-common:
 	dh_installinfo
 	dh_installchangelogs ChangeLog
 	dh_link
-	# Do not strip (See [Note-nostrip])
+	# NOTE: Do not strip, it is currently done in the linker stage.
+	# Otherwise when stripping the self-extracting modules and the
+	# help text are removed.
 #	dh_strip
 	dh_compress
 	dh_fixperms
