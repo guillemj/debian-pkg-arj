@@ -1,3 +1,14 @@
+arj (3.10.22-3) UNRELEASED; urgency=low
+
+  * Switched to quilt:
+    - Add new debian/patches/series file.
+    - Add Build-Depends on 'quilt (>= 0.40)'.
+    - Include quilt.make from debian/rules.
+    - Make clean a single colon target and depend on unpatch in debian/rules.
+    - Remove now unused debian/patch.mk.
+
+ -- Guillem Jover <guillem@debian.org>  Tue,  3 Oct 2006 04:40:57 +0300
+
 arj (3.10.22-2) unstable; urgency=low
 
   * Make the code 64 bit clean. (Closes: #339815)

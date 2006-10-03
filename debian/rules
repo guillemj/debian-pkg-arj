@@ -24,7 +24,7 @@ ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
 	DEBUG = "DEBUG=1"
 endif
 
-include debian/patch.mk
+include /usr/share/quilt/quilt.make
 
 gnu/config.status: patch gnu/configure
 gnu/configure:
@@ -44,7 +44,7 @@ build: gnu/config.status
 	
 	$(MAKE) CFLAGS="$(CFLAGS)" $(DEBUG)
 
-clean::
+clean: unpatch
 	dh_testdir
 	dh_testroot
 	rm -f configure-stamp

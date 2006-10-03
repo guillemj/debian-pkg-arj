@@ -1,0 +1,3 @@
+001_arches_align.patch -p1
+002_no_remove_static_const.patch -p1
+003_64_bit_clean.patch -p1
