@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Guillem Jover <guillem@debian.org>
 Uploaders: Ola Lundqvist <opal@debian.org>
-Build-Depends: debhelper (>= 4.0.0), quilt (>= 0.40), autoconf
+Build-Depends: debhelper (>= 5.0.0), quilt (>= 0.40), autoconf
 Standards-Version: 3.6.2
 
 Package: arj
