@@ -26,18 +26,18 @@ endif
 
 include /usr/share/quilt/quilt.make
 
-gnu/config.status: patch gnu/configure
-gnu/configure:
+gnu/configure: patch gnu/configure.in
 	dh_testdir
 	
-	( \
-	cd gnu; \
-	autoconf; \
-	./configure \
+	cd gnu && autoconf -f -i
+
+gnu/config.status: gnu/configure
+	dh_testdir
+	
+	cd gnu && ./configure \
 		--prefix=/usr \
 		--mandir=\$${prefix}/share/man \
-		--host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) \
-	)
+		--host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE)
 
 build: gnu/config.status
 	dh_testdir
