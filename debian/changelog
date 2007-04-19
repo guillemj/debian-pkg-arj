@@ -7,6 +7,7 @@ arj (3.10.22-3) UNRELEASED; urgency=low
     - Make clean a single colon target and depend on unpatch in debian/rules.
     - Remove now unused debian/patch.mk.
   * Split autoconf and configure targets.
+  * Do not remove configure-stamp, as it's not created anymore.
   * Add a Tag: field to the binary package, using the data from debtags.
 
  -- Guillem Jover <guillem@debian.org>  Tue,  3 Oct 2006 04:40:57 +0300

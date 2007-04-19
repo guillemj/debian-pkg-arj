@@ -47,9 +47,9 @@ build: gnu/config.status
 clean: unpatch
 	dh_testdir
 	dh_testroot
-	rm -f configure-stamp
 	
 	-$(MAKE) clean
+	
 	-rm -f gnu/{configure,config.{status,log,cache}}
 	-rm -rf gnu/autom4te.cache
 	-rm -f c_defs.h GNUmakefile
