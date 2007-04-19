@@ -8,6 +8,8 @@ arj (3.10.22-3) UNRELEASED; urgency=low
     - Remove now unused debian/patch.mk.
   * Split autoconf and configure targets.
   * Do not remove configure-stamp, as it's not created anymore.
+  * Rename the build target to build-arch, add a build-indep target and a
+    build one which depends on both.
   * Add a Tag: field to the binary package, using the data from debtags.
 
  -- Guillem Jover <guillem@debian.org>  Tue,  3 Oct 2006 04:40:57 +0300

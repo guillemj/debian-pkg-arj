@@ -39,10 +39,14 @@ gnu/config.status: gnu/configure
 		--mandir=\$${prefix}/share/man \
 		--host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE)
 
-build: gnu/config.status
+build-indep:
+
+build-arch: gnu/config.status
 	dh_testdir
 	
 	$(MAKE) CFLAGS="$(CFLAGS)" $(DEBUG)
+
+build: build-arch build-indep
 
 clean: unpatch
 	dh_testdir
@@ -61,7 +65,7 @@ clean: unpatch
 	
 	dh_clean
 
-install-arch: build
+install-arch: build-arch
 	dh_testdir
 	dh_testroot
 	dh_clean -k
@@ -103,6 +107,6 @@ binary-arch: install-arch
 
 binary: binary-arch binary-indep
 
-.PHONY: clean configure build install-arch
+.PHONY: clean configure build build-indep build-arch install-arch
 .PHONY: binary-common binary-indep binary-arch binary
 
