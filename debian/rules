@@ -54,7 +54,8 @@ clean: unpatch
 	
 	-$(MAKE) clean
 	
-	-rm -f gnu/{configure,config.{status,log,cache}}
+	-rm -f gnu/configure
+	-rm -f gnu/config.status gnu/config.log gnu/config.cache
 	-rm -rf gnu/autom4te.cache
 	-rm -f c_defs.h GNUmakefile
 	

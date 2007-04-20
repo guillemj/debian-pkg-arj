@@ -12,6 +12,7 @@ arj (3.10.22-3) UNRELEASED; urgency=low
     build one which depends on both.
   * Switch to debhelper compatibility level 5.
   * Now using Standards-Version 3.7.2 (no changes needed).
+  * Get rid of brace expansion bashisms in debian/rules.
   * Add a Tag: field to the binary package, using the data from debtags.
 
  -- Guillem Jover <guillem@debian.org>  Tue,  3 Oct 2006 04:40:57 +0300
