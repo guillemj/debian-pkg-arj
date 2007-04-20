@@ -1,4 +1,4 @@
-arj (3.10.22-3) UNRELEASED; urgency=low
+arj (3.10.22-3) unstable; urgency=low
 
   * Switched to quilt:
     - Add new debian/patches/series file.
@@ -15,7 +15,7 @@ arj (3.10.22-3) UNRELEASED; urgency=low
   * Get rid of brace expansion bashisms in debian/rules.
   * Add a Tag: field to the binary package, using the data from debtags.
 
- -- Guillem Jover <guillem@debian.org>  Tue,  3 Oct 2006 04:40:57 +0300
+ -- Guillem Jover <guillem@debian.org>  Fri, 20 Apr 2007 03:03:26 +0300
 
 arj (3.10.22-2) unstable; urgency=low
 
