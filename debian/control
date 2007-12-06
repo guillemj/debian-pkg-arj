@@ -7,7 +7,7 @@ Homepage: http://sf.net/projects/arj/
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-arj/
 Vcs-Svn: svn://svn.debian.org/pkg-arj/trunk/
 Build-Depends: debhelper (>= 5.0.0), quilt (>= 0.40), autoconf
-Standards-Version: 3.7.2
+Standards-Version: 3.7.3
 
 Package: arj
 Architecture: any
