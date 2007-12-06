@@ -85,11 +85,9 @@ install-arch: build-arch
 binary-common:
 	dh_testdir
 	dh_testroot
-#	dh_installdebconf
 	dh_installdocs
 	dh_installexamples
 	dh_installmenu
-#	dh_installmime
 	dh_installcron
 	dh_installman
 	dh_installinfo
