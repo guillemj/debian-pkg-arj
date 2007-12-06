@@ -12,6 +12,12 @@ INSTALL_DATA=$(INSTALL) -m 644
 DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
+ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
+  conf_gnu_type += --build $(DEB_HOST_GNU_TYPE)
+else
+  conf_gnu_type += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+endif
+
 CFLAGS = -Wall -g
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
@@ -35,9 +41,9 @@ gnu/config.status: gnu/configure
 	dh_testdir
 	
 	cd gnu && ./configure \
-		--prefix=/usr \
-		--mandir=\$${prefix}/share/man \
-		--host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE)
+	  $(conf_gnu_type) \
+	  --prefix=/usr \
+	  --mandir=\$${prefix}/share/man
 
 build-indep:
 
