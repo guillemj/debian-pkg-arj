@@ -3,6 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Guillem Jover <guillem@debian.org>
 Uploaders: Ola Lundqvist <opal@debian.org>
+Homepage: http://sf.net/projects/arj/
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-arj/
 Vcs-Svn: svn://svn.debian.org/pkg-arj/trunk/
 Build-Depends: debhelper (>= 5.0.0), quilt (>= 0.40), autoconf

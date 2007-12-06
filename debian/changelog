@@ -2,6 +2,7 @@ arj (3.10.22-4) UNRELEASED; urgency=low
 
   * Do not ignore make errors on debian/rules clean.
   * Add Vcs-Browser and Vcs-Svn fields.
+  * Add Homepage field.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 06 Dec 2007 04:30:52 +0200
 
