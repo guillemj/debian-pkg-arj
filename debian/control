@@ -12,7 +12,6 @@ Standards-Version: 3.7.3
 Package: arj
 Architecture: any
 Depends: ${shlibs:Depends}
-XB-Tag: interface::commandline, implemented-in::c, role::utility, use::compressing, use::storing, works-with::archive
 Description: archiver for .arj files
  This package is an open source version of the arj archiver. This version
  has been created with the intent to preserve maximum compatibility and
