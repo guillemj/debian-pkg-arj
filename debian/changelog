@@ -7,6 +7,8 @@ arj (3.10.22-4) UNRELEASED; urgency=low
   * Call configure with autotools-dev recommended --build and --host options.
   * Remove commented out debhelper commands.
   * Remove Tag field, it's better maintained outside the package.
+  * Do not directly use the QA SourceForce redirector, instead use an URL
+    to sf.net. (Closes: #453532)
 
  -- Guillem Jover <guillem@debian.org>  Thu, 06 Dec 2007 04:30:52 +0200
 
