@@ -52,7 +52,7 @@ clean: unpatch
 	dh_testdir
 	dh_testroot
 	
-	-$(MAKE) clean
+	[ ! -f Makefile ] || $(MAKE) clean
 	
 	-rm -f gnu/configure
 	-rm -f gnu/config.status gnu/config.log gnu/config.cache
