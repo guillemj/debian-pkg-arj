@@ -9,6 +9,8 @@ arj (3.10.22-4) UNRELEASED; urgency=low
   * Remove Tag field, it's better maintained outside the package.
   * Do not directly use the QA SourceForce redirector, instead use an URL
     to sf.net. (Closes: #453532)
+  * Fix upstream Makefile to support parallel builds.
+    - 004_parallel_build.patch: New file.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 06 Dec 2007 04:30:52 +0200
 
