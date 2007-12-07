@@ -11,6 +11,8 @@ arj (3.10.22-4) UNRELEASED; urgency=low
     to sf.net. (Closes: #453532)
   * Fix upstream Makefile to support parallel builds.
     - 004_parallel_build.patch: New file.
+  * Move patch dependency in debian/rules from gnu/configure target to
+    gnu/configure.in.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 06 Dec 2007 04:30:52 +0200
 

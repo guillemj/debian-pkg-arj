@@ -32,7 +32,9 @@ endif
 
 include /usr/share/quilt/quilt.make
 
-gnu/configure: patch gnu/configure.in
+gnu/configure.in: patch
+
+gnu/configure: gnu/configure.in
 	dh_testdir
 	
 	cd gnu && autoconf -f -i
