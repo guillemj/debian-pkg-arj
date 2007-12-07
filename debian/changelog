@@ -1,20 +1,20 @@
-arj (3.10.22-4) UNRELEASED; urgency=low
+arj (3.10.22-4) unstable; urgency=low
 
-  * Do not ignore make errors on debian/rules clean.
+  * Do not ignore make errors on 'debian/rules clean'.
   * Add Vcs-Browser and Vcs-Svn fields.
   * Add Homepage field.
   * Now using Standards-Version 3.7.3 (no changes needed).
   * Call configure with autotools-dev recommended --build and --host options.
-  * Remove commented out debhelper commands.
+  * Remove irrelevant commented out debhelper commands.
   * Remove Tag field, it's better maintained outside the package.
-  * Do not directly use the QA SourceForce redirector, instead use an URL
+  * Do not directly use the QA SourceForge redirector, instead use an URL
     to sf.net. (Closes: #453532)
   * Fix upstream Makefile to support parallel builds.
     - 004_parallel_build.patch: New file.
   * Move patch dependency in debian/rules from gnu/configure target to
     gnu/configure.in.
 
- -- Guillem Jover <guillem@debian.org>  Thu, 06 Dec 2007 04:30:52 +0200
+ -- Guillem Jover <guillem@debian.org>  Fri, 07 Dec 2007 06:12:20 +0200
 
 arj (3.10.22-3) unstable; urgency=low
 
