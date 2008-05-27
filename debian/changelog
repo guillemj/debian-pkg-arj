@@ -1,6 +1,8 @@
 arj (3.10.22-5) UNRELEASED; urgency=low
 
   * Remove packaging svn information from debian/copyright.
+  * Cleanup debian/copyright:
+    - Change 'Copyright' to 'Copyright Holders'.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 28 May 2008 01:19:05 +0300
 
