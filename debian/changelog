@@ -1,3 +1,9 @@
+arj (3.10.22-5) UNRELEASED; urgency=low
+
+  * Remove packaging svn information from debian/copyright.
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 28 May 2008 01:19:05 +0300
+
 arj (3.10.22-4) unstable; urgency=low
 
   * Do not ignore make errors on 'debian/rules clean'.
