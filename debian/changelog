@@ -4,6 +4,8 @@ arj (3.10.22-5) UNRELEASED; urgency=low
   * Cleanup debian/copyright:
     - Change 'Copyright' to 'Copyright Holders'.
     - Use UTF-8 copyright symbol.
+  * Refer to original author Robert K. Jung in the manual page.
+    - doc_refer_robert_k_jung.patch: New file. (Closes: #456275)
 
  -- Guillem Jover <guillem@debian.org>  Wed, 28 May 2008 01:19:05 +0300
 
