@@ -1,4 +1,4 @@
-arj (3.10.22-5) UNRELEASED; urgency=low
+arj (3.10.22-5) unstable; urgency=low
 
   * Remove packaging svn information from debian/copyright.
   * Cleanup debian/copyright:
@@ -7,7 +7,7 @@ arj (3.10.22-5) UNRELEASED; urgency=low
   * Refer to original author Robert K. Jung in the manual page.
     - doc_refer_robert_k_jung.patch: New file. (Closes: #456275)
 
- -- Guillem Jover <guillem@debian.org>  Wed, 28 May 2008 01:19:05 +0300
+ -- Guillem Jover <guillem@debian.org>  Thu, 29 May 2008 04:04:06 +0300
 
 arj (3.10.22-4) unstable; urgency=low
 
