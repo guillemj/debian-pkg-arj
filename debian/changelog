@@ -1,3 +1,9 @@
+arj (3.10.22-6) UNRELEASED; urgency=low
+
+  * Update packaging Vcs fields to the new URL.
+
+ -- Guillem Jover <guillem@debian.org>  Mon, 16 Jun 2008 06:59:48 +0300
+
 arj (3.10.22-5) unstable; urgency=low
 
   * Remove packaging svn information from debian/copyright.
