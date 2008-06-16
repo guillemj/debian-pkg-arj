@@ -1,7 +1,8 @@
-diff -Naur arj-3.10.22.orig/gnu/makefile.in arj-3.10.22/gnu/makefile.in
---- arj-3.10.22.orig/gnu/makefile.in	2004-04-17 14:28:06.000000000 +0300
-+++ arj-3.10.22/gnu/makefile.in	2005-08-04 21:50:24.000000000 +0300
-@@ -192,6 +192,15 @@
+Index: b/gnu/makefile.in
+===================================================================
+--- a/gnu/makefile.in	2004-04-17 14:28:06.000000000 +0300
++++ b/gnu/makefile.in	2008-06-16 08:25:42.000000000 +0300
+@@ -192,6 +192,15 @@ timestamp: $(TOOLS_DIR)/today$x
  dispose:
  
  #
