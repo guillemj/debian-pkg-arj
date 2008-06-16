@@ -1,4 +1,3 @@
-#DPATCHLEVEL=1
 diff -Naur arj-3.10.22.orig/gnu/makefile.in arj-3.10.22/gnu/makefile.in
 --- arj-3.10.22.orig/gnu/makefile.in	2004-04-17 14:28:06.000000000 +0300
 +++ arj-3.10.22/gnu/makefile.in	2005-08-04 21:50:24.000000000 +0300
