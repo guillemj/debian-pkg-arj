@@ -4,6 +4,7 @@ arj (3.10.22-6) UNRELEASED; urgency=low
   * Remove DPATCHLEVEL variable from patches.
   * Refresh patches with -pab.
   * Add a debian/README.source file.
+  * Now using Standards-Version 3.8.0.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 16 Jun 2008 06:59:48 +0300
 
