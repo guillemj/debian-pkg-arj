@@ -3,6 +3,7 @@ arj (3.10.22-6) UNRELEASED; urgency=low
   * Update packaging Vcs fields to the new URL.
   * Remove DPATCHLEVEL variable from patches.
   * Refresh patches with -pab.
+  * Add a debian/README.source file.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 16 Jun 2008 06:59:48 +0300
 
