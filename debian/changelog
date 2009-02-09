@@ -1,3 +1,9 @@
+arj (3.10.22-7) UNRELEASED; urgency=low
+
+  * Switch to debhelper compatibility level 7.
+
+ -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:53:36 +0200
+
 arj (3.10.22-6) unstable; urgency=low
 
   * Update packaging Vcs fields to the new URL.
