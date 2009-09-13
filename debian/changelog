@@ -10,6 +10,8 @@ arj (3.10.22-7) UNRELEASED; urgency=low
   * Add misc:Depends substvar to arj Depends.
   * Update config.guess and config.sub before running configure and remove
     them on clean to avoid shipping them on the diff.
+  * Build-Depend on autotools-dev to guarantee up to date config.guess and
+    config.sub files.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:53:36 +0200
 
