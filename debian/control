@@ -11,7 +11,7 @@ Standards-Version: 3.8.3
 
 Package: arj
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: archiver for .arj files
  This package is an open source version of the arj archiver. This version
  has been created with the intent to preserve maximum compatibility and
