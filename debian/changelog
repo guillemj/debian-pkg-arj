@@ -1,4 +1,4 @@
-arj (3.10.22-7) UNRELEASED; urgency=low
+arj (3.10.22-7) unstable; urgency=low
 
   * Switch to debhelper compatibility level 7.
   * Use dh_prep instead of “dh_clean -k”.
@@ -13,7 +13,7 @@ arj (3.10.22-7) UNRELEASED; urgency=low
   * Build-Depend on autotools-dev to guarantee up to date config.guess and
     config.sub files.
 
- -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:53:36 +0200
+ -- Guillem Jover <guillem@debian.org>  Sun, 13 Sep 2009 22:16:12 +0200
 
 arj (3.10.22-6) unstable; urgency=low
 
