@@ -31,10 +31,6 @@ ifneq (,$(filter debug,$(DEB_BUILD_OPTIONS)))
 	DEBUG = "DEBUG=1"
 endif
 
-include /usr/share/quilt/quilt.make
-
-gnu/configure.in: patch
-
 gnu/configure: gnu/configure.in
 	dh_testdir
 	
@@ -62,7 +58,7 @@ build-arch: gnu/config.status
 
 build: build-arch build-indep
 
-clean: unpatch
+clean:
 	dh_testdir
 	dh_testroot
 	
