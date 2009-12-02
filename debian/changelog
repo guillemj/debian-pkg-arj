@@ -1,4 +1,4 @@
-arj (3.10.22-8) UNRELEASED; urgency=low
+arj (3.10.22-8) unstable; urgency=low
 
   * Switch to source format “3.0 (quilt)”:
     - Remove quilt from Build-Depends.
@@ -6,7 +6,7 @@ arj (3.10.22-8) UNRELEASED; urgency=low
     - Remove patch and unpatch targets from debian/rules.
     - Remove now unneeded debian/README.source.
 
- -- Guillem Jover <guillem@debian.org>  Mon, 09 Nov 2009 05:42:40 +0100
+ -- Guillem Jover <guillem@debian.org>  Wed, 02 Dec 2009 21:27:38 +0100
 
 arj (3.10.22-7) unstable; urgency=low
 
