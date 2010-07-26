@@ -1,11 +1,11 @@
-arj (3.10.22-9) UNRELEASED; urgency=low
+arj (3.10.22-9) unstable; urgency=low
 
   * Use a safe strcpy for overlapping strings, among others fixes a build
     problem with a mangled generated .c file by msgbind (thus FTBFS), and
     CRC errors at run-time. (Closes: #590354)
   * Now using Standards-Version 3.9.1 (no changes needed).
 
- -- Guillem Jover <guillem@debian.org>  Mon, 26 Jul 2010 14:07:04 +0200
+ -- Guillem Jover <guillem@debian.org>  Mon, 26 Jul 2010 15:18:11 +0200
 
 arj (3.10.22-8) unstable; urgency=low
 
