@@ -3,4 +3,5 @@
 003_64_bit_clean.patch
 004_parallel_build.patch
 005_use_system_strnlen.patch
+006_use_safe_strcpy.patch
 doc_refer_robert_k_jung.patch
