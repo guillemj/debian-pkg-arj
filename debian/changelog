@@ -301,4 +301,3 @@ arj (3.10b-1) unstable; urgency=low
   * Initial release, closes: #178488.
 
  -- Ola Lundqvist <opal@debian.org>  Mon, 27 Jan 2003 19:47:51 +0100
-
