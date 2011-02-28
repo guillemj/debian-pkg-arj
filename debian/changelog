@@ -1,3 +1,10 @@
+arj (3.10.22-10) UNRELEASED; urgency=low
+
+  * Fix build failure on GNU/Hurd due to missing -ldl, by adding “gnu*” to
+    the configure case handling libdl linking.
+
+ -- Guillem Jover <guillem@debian.org>  Sun, 27 Feb 2011 19:31:35 +0100
+
 arj (3.10.22-9) unstable; urgency=low
 
   * Use a safe strcpy for overlapping strings, among others fixes a build
