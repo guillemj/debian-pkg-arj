@@ -7,3 +7,4 @@
 hurd_no_fcntl_getlk.patch
 doc_refer_robert_k_jung.patch
 gnu_build_fix.patch
+gnu_build_flags.patch

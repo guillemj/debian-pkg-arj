@@ -6,6 +6,7 @@ arj (3.10.22-11) UNRELEASED; urgency=low
     so that we can use standard flags everywhere.
   * Fix clean target by checking existence of GNUmakefile instead of Makefile.
   * Fix build failure on GNU/Hurd, by handling unimplemented fcntl(F_GETLK).
+  * Fix upstream build system to honour CPPFLAGS and LDFLAGS.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 09 May 2013 15:19:25 +0200
 
