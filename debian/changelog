@@ -8,6 +8,8 @@ arj (3.10.22-11) UNRELEASED; urgency=low
   * Fix build failure on GNU/Hurd, by handling unimplemented fcntl(F_GETLK).
   * Fix upstream build system to honour CPPFLAGS and LDFLAGS.
   * Fix format security errors.
+  * Switch to use dpkg-buildflags to set CPPFLAGS, CFLAGS and LDFLAGS,
+    thus enabling hardening flags. (Closes: #673479)
 
  -- Guillem Jover <guillem@debian.org>  Thu, 09 May 2013 15:19:25 +0200
 
