@@ -62,7 +62,7 @@ clean:
 	dh_testdir
 	dh_testroot
 	
-	[ ! -f Makefile ] || $(MAKE) clean
+	[ ! -f GNUmakefile ] || $(MAKE) clean
 	
 	-rm -f gnu/configure
 	-rm -f gnu/config.status gnu/config.log gnu/config.cache

@@ -4,6 +4,7 @@ arj (3.10.22-11) UNRELEASED; urgency=low
   * Set the static const intergrity_identifier variable as volatile instead
     of building the file with -O0 to avoid the compiler optimizing it away,
     so that we can use standard flags everywhere.
+  * Fix clean target by checking existence of GNUmakefile instead of Makefile.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 09 May 2013 15:19:25 +0200
 
