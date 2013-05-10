@@ -27,6 +27,10 @@ ifneq (,$(filter debug,$(DEB_BUILD_OPTIONS)))
 	DEBUG = "DEBUG=1"
 endif
 
+ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
+	STRIP = "BUILD_STRIP=1"
+endif
+
 gnu/configure: gnu/configure.in
 	dh_testdir
 	
@@ -50,7 +54,7 @@ build-indep:
 build-arch: gnu/config.status
 	dh_testdir
 	
-	$(MAKE) $(DEBUG) \
+	$(MAKE) $(DEBUG) $(STRIP)\
 	  CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)"
 
 build: build-arch build-indep
@@ -90,8 +94,9 @@ binary-common:
 	dh_installinfo
 	dh_installchangelogs ChangeLog
 	dh_link
-	# NOTE: Do not strip, it is currently done in the linker stage.
-	# Otherwise when stripping the self-extracting modules and the
+	# NOTE: Do not strip here, it is currently done in the upstream build
+	# system, after the linker stage and before preprocessing the binary
+	# files. Otherwise when stripping the self-extracting modules and the
 	# help text are removed.
 #	dh_strip
 	dh_compress
