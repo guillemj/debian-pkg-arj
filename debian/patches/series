@@ -4,5 +4,6 @@
 004_parallel_build.patch
 005_use_system_strnlen.patch
 006_use_safe_strcpy.patch
+hurd_no_fcntl_getlk.patch
 doc_refer_robert_k_jung.patch
 gnu_build_fix.patch
