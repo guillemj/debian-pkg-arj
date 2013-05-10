@@ -1,20 +1,15 @@
-Index: b/gnu/makefile.in
-===================================================================
---- a/gnu/makefile.in	2004-04-17 14:28:06.000000000 +0300
-+++ b/gnu/makefile.in	2008-06-16 08:25:42.000000000 +0300
-@@ -192,6 +192,15 @@ timestamp: $(TOOLS_DIR)/today$x
- dispose:
+---
+ integr.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/integr.c
++++ b/integr.c
+@@ -5,7 +5,7 @@
+  *
+  */
  
- #
-+# XXX: Do not use -O2, it removes the static const variable with gcc 4.x
-+#
-+
-+INTEGR_DIRS = $(ARJ_DIR) $(REARJ_DIR) $(ARJCRYPT_DIR) $(REGISTER_DIR)
-+
-+$(patsubst %,%/integr.o, $(INTEGR_DIRS)): $(SRC_DIR)/integr.c
-+	$(CC) -Wall -g -c -o$@ $<
-+
-+#
- # The tools
- #
- 
+-static const char intergrity_identifier[] = {
++static volatile const char intergrity_identifier[] = {
+ 	0xB0, 0x03, 0xB0, 0x02, 0xB0, 0x03,
+ 	0xB0, 0x04, 0xB0, 0x05,
+ 	0x90, 0x90, 0x90, 0x90,
