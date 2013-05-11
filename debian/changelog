@@ -1,3 +1,9 @@
+arj (3.10.22-12) UNRELEASED; urgency=low
+
+  * Remove package creation information from debian/copyright.
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 11 May 2013 15:23:12 +0200
+
 arj (3.10.22-11) unstable; urgency=low
 
   * Now using Standards-Version 3.9.4 (no changes needed).
