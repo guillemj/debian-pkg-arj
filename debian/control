@@ -7,7 +7,7 @@ Homepage: http://sf.net/projects/arj/
 Vcs-Browser: http://git.hadrons.org/?p=debian/pkgs/arj.git
 Vcs-Git: git://git.hadrons.org/git/debian/pkgs/arj.git
 Build-Depends: debhelper (>= 9), autotools-dev, autoconf
-Standards-Version: 3.9.4
+Standards-Version: 3.9.5
 
 Package: arj
 Architecture: any
