@@ -4,6 +4,8 @@ arj (3.10.22-12) UNRELEASED; urgency=low
   * Switch debian/copyright to machine-readable format 1.0.
   * Switch to debhelper compatibility level 9.
   * Now using Standards-Version 3.9.5 (no changes needed).
+  * Fix self integrity check command on 64-bit systems.
+    Thanks to B Watson <yalhcru@gmail.com>.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 11 May 2013 15:23:12 +0200
 
