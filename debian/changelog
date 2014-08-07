@@ -2,6 +2,7 @@ arj (3.10.22-12) UNRELEASED; urgency=low
 
   * Remove package creation information from debian/copyright.
   * Switch debian/copyright to machine-readable format 1.0.
+  * Switch to debhelper compatibility level 9.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 11 May 2013 15:23:12 +0200
 
