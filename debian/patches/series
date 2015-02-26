@@ -11,3 +11,4 @@ gnu_build_fix.patch
 gnu_build_flags.patch
 gnu_build_strip.patch
 self_integrity_64bit.patch
+security-afl.patch
