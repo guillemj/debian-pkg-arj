@@ -2,6 +2,8 @@ arj (3.10.22-13) UNRELEASED; urgency=low
 
   * Fix buffer overflow from size under user control, causing free() on an
     invalid pointer. (Closes: #774015)
+  * Fix absolute path directory traversal. Fixes CVE-2015-0557.
+    (Closes: #774435)
 
  -- Guillem Jover <guillem@debian.org>  Fri, 27 Mar 2015 18:12:15 +0100
 
