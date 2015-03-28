@@ -13,3 +13,4 @@ gnu_build_strip.patch
 self_integrity_64bit.patch
 security-afl.patch
 security-traversal-dir.patch
+security-traversal-symlink.patch
