@@ -1,4 +1,4 @@
-arj (3.10.22-13) UNRELEASED; urgency=low
+arj (3.10.22-13) unstable; urgency=high
 
   * Fix buffer overflow from size under user control, causing free() on an
     invalid pointer. (Closes: #774015)
@@ -6,7 +6,7 @@ arj (3.10.22-13) UNRELEASED; urgency=low
     (Closes: #774435)
   * Fix symlink directory traversal. Fixes CVE-2015-0556. (Closes: #774434)
 
- -- Guillem Jover <guillem@debian.org>  Fri, 27 Mar 2015 18:12:15 +0100
+ -- Guillem Jover <guillem@debian.org>  Sat, 28 Mar 2015 04:22:18 +0100
 
 arj (3.10.22-12) unstable; urgency=low
 
