@@ -1,9 +1,9 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: arj
 Upstream-Contact:
  Andrew Belov <andrew_belov@newmail.ru> -- programmer
  Viatcheslav Odintsov -- head of the testing group
-Source: http://prdownloads.sf.net/arj/
+Source: https://sf.net/projects/arj/files/
 
 Files: *
 Copyright:
