@@ -3,6 +3,7 @@ arj (3.10.22-14) UNRELEASED; urgency=low
   * Use https for the debian/copyright Format and Source URLs.
   * Switch Vcs-Browser to a cgit URL.
   * Now using Standards-Version 3.9.6 (no changes needed).
+  * Strip .comment and .note sections from executables.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 02 May 2015 02:41:18 +0200
 
