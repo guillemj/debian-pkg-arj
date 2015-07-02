@@ -20,8 +20,8 @@ else
 endif
 
 CPPFLAGS = $(shell dpkg-buildflags --get CPPFLAGS)
-CFLAGS = $(shell dpkg-buildflags --get CFLAGS) -Wall
-LDFLAGS = $(shell dpkg-buildflags --get LDFLAGS)
+CFLAGS = $(shell dpkg-buildflags --get CFLAGS) $(shell getconf LFS_CFLAGS) -Wall
+LDFLAGS = $(shell dpkg-buildflags --get LDFLAGS) $(shell getconf LFS_LDFLAGS)
 
 ifneq (,$(filter debug,$(DEB_BUILD_OPTIONS)))
 	DEBUG = "DEBUG=1"
