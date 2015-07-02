@@ -14,3 +14,4 @@ self_integrity_64bit.patch
 security-afl.patch
 security-traversal-dir.patch
 security-traversal-symlink.patch
+out-of-bounds-read.patch

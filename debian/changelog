@@ -4,6 +4,8 @@ arj (3.10.22-14) UNRELEASED; urgency=low
   * Switch Vcs-Browser to a cgit URL.
   * Now using Standards-Version 3.9.6 (no changes needed).
   * Strip .comment and .note sections from executables.
+  * Fix out-of-bounds read access due to an index overflow, from controlled
+    input data in an archive. (Closes: #783948)
 
  -- Guillem Jover <guillem@debian.org>  Sat, 02 May 2015 02:41:18 +0200
 
