@@ -1,4 +1,4 @@
-arj (3.10.22-14) UNRELEASED; urgency=low
+arj (3.10.22-14) unstable; urgency=low
 
   * Use https for the debian/copyright Format and Source URLs.
   * Switch Vcs-Browser to a cgit URL.
@@ -8,7 +8,7 @@ arj (3.10.22-14) UNRELEASED; urgency=low
     input data in an archive. (Closes: #783948)
   * Enable LFS, using getconf to pass the correct build flags.
 
- -- Guillem Jover <guillem@debian.org>  Sat, 02 May 2015 02:41:18 +0200
+ -- Guillem Jover <guillem@debian.org>  Thu, 02 Jul 2015 03:11:36 +0200
 
 arj (3.10.22-13) unstable; urgency=high
 
