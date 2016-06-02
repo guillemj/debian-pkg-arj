@@ -1,6 +1,7 @@
 arj (3.10.22-15) UNRELEASED; urgency=medium
 
   * Use https for hadrons.org URLs.
+  * Bump Standards-Version to 3.9.8 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Sat, 05 Dec 2015 16:35:26 +0100
 
