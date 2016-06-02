@@ -3,6 +3,9 @@ arj (3.10.22-15) UNRELEASED; urgency=medium
   * Use https for hadrons.org URLs.
   * Bump Standards-Version to 3.9.8 (no changes needed).
   * Switch to the dpkg makefile fragments in debian/rules.
+  * Always pass -fPIC and -shared as last options when building the shared
+    object plugin.
+  * Enable all hardening flags.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 05 Dec 2015 16:35:26 +0100
 
