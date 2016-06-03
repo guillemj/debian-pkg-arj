@@ -1,4 +1,4 @@
-arj (3.10.22-15) UNRELEASED; urgency=medium
+arj (3.10.22-15) unstable; urgency=medium
 
   * Use https for hadrons.org URLs.
   * Bump Standards-Version to 3.9.8 (no changes needed).
@@ -7,7 +7,7 @@ arj (3.10.22-15) UNRELEASED; urgency=medium
     object plugin.
   * Enable all hardening flags.
 
- -- Guillem Jover <guillem@debian.org>  Sat, 05 Dec 2015 16:35:26 +0100
+ -- Guillem Jover <guillem@debian.org>  Sat, 04 Jun 2016 00:54:25 +0200
 
 arj (3.10.22-14) unstable; urgency=low
 
