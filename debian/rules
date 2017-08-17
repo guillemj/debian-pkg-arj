@@ -37,11 +37,7 @@ gnu/configure: gnu/configure.in
 
 gnu/config.status: gnu/configure
 	dh_testdir
-	
-	-test -r /usr/share/misc/config.sub && \
-	  cp -fu /usr/share/misc/config.sub gnu/config.sub
-	-test -r /usr/share/misc/config.guess && \
-	  cp -fu /usr/share/misc/config.guess gnu/config.guess
+	dh_autotools-dev_updateconfig
 	
 	cd gnu && ./configure \
 	  $(conf_gnu_type) \
@@ -68,8 +64,8 @@ clean:
 	-rm -f gnu/config.status gnu/config.log gnu/config.cache
 	-rm -rf gnu/autom4te.cache
 	-rm -f c_defs.h GNUmakefile
-	rm -f gnu/config.sub gnu/config.guess
 	
+	dh_autotools-dev_restoreconfig
 	dh_clean
 
 install-arch: build-arch

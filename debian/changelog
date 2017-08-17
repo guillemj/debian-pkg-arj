@@ -3,6 +3,9 @@ arj (3.10.22-16) UNRELEASED; urgency=medium
   * Line-wrap dependency fields.
   * Bump Standards-Version to 4.0.1 (no changes needed).
   * Switch to debhelper compatibility level 10.
+  * Use autotools-dev debhelper commands instead of updating the config.*
+    files manually (we cannot use dh_update_autotools_config because it
+    does not handle ancient config.* files).
 
  -- Guillem Jover <guillem@debian.org>  Thu, 17 Aug 2017 23:17:28 +0200
 
