@@ -6,11 +6,11 @@ Uploaders: Ola Lundqvist <opal@debian.org>
 Homepage: http://sf.net/projects/arj/
 Vcs-Browser: https://git.hadrons.org/cgit/debian/pkgs/arj.git
 Vcs-Git: https://git.hadrons.org/git/debian/pkgs/arj.git
+Standards-Version: 4.0.1
 Build-Depends:
  debhelper (>= 9),
  autotools-dev,
  autoconf,
-Standards-Version: 3.9.8
 
 Package: arj
 Architecture: any
