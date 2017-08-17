@@ -1,3 +1,9 @@
+arj (3.10.22-16) UNRELEASED; urgency=medium
+
+  * Line-wrap dependency fields.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 17 Aug 2017 23:17:28 +0200
+
 arj (3.10.22-15) unstable; urgency=medium
 
   * Use https for hadrons.org URLs.
