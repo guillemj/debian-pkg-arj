@@ -8,6 +8,9 @@ arj (3.10.22-16) UNRELEASED; urgency=medium
     does not handle ancient config.* files).
   * Move location of GPL-2 in Debian systems into a Comment field in
     debian/copyright.
+  * Fix cross building by setting the CC detected in configure in the
+    generated makefile. Thanks to Helmut Grohne <helmut@subdivi.de>.
+    Closes: #875567
 
  -- Guillem Jover <guillem@debian.org>  Thu, 17 Aug 2017 23:17:28 +0200
 

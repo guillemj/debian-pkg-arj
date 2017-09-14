@@ -16,3 +16,4 @@ security-afl.patch
 security-traversal-dir.patch
 security-traversal-symlink.patch
 out-of-bounds-read.patch
+gnu_build_cross.patch

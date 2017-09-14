@@ -1,0 +1,22 @@
+Description: Fix cross builds, by setting the CC detected in configure in
+ the generated makefile.
+Author: Helmut Grohne <helmut@subdivi.de>
+Origin: vendor
+Forwarded: no
+Bug-Debian: 875567
+Last-Update: 2017-09-12
+
+---
+ gnu/makefile.in |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/gnu/makefile.in
++++ b/gnu/makefile.in
+@@ -16,6 +16,7 @@ REGISTER = @REGISTER@
+ 
+ # Programs
+ 
++CC = @CC@
+ INSTALL = @INSTALL@
+ INSTALL_DIR = @INSTALL@ -d -m 755
+ INSTALL_DATA = @INSTALL_DATA@
