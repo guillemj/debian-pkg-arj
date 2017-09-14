@@ -11,6 +11,10 @@ arj (3.10.22-16) UNRELEASED; urgency=medium
   * Fix cross building by setting the CC detected in configure in the
     generated makefile. Thanks to Helmut Grohne <helmut@subdivi.de>.
     Closes: #875567
+  * Remove the build date from resulting generated binary. This makes
+    the package build more deterministic, and fixes cross building by
+    not running a build tool compiled for the host.
+    Thanks to Helmut Grohne <helmut@subdivi.de>. Closes: #875568
 
  -- Guillem Jover <guillem@debian.org>  Thu, 17 Aug 2017 23:17:28 +0200
 
