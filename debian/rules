@@ -37,7 +37,7 @@ gnu/configure: gnu/configure.in
 
 gnu/config.status: gnu/configure
 	dh_testdir
-	dh_autotools-dev_updateconfig
+	dh_update_autotools_config
 	
 	cd gnu && ./configure \
 	  $(conf_gnu_type) \
@@ -65,7 +65,6 @@ clean:
 	-rm -rf gnu/autom4te.cache
 	-rm -f c_defs.h GNUmakefile
 	
-	dh_autotools-dev_restoreconfig
 	dh_clean
 
 install-arch: build-arch

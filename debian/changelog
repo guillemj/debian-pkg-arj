@@ -3,9 +3,9 @@ arj (3.10.22-16) UNRELEASED; urgency=medium
   * Line-wrap dependency fields.
   * Bump Standards-Version to 4.1.0 (no changes needed).
   * Switch to debhelper compatibility level 10.
-  * Use autotools-dev debhelper commands instead of updating the config.*
-    files manually (we cannot use dh_update_autotools_config because it
-    does not handle ancient config.* files).
+  * Use the dh_update_autotools_config command instead of updating the
+    config.* files manually, and bump the debhelper Build-Depends version
+    to the one that can handle ancient config.* files.
   * Move location of GPL-2 in Debian systems into a Comment field in
     debian/copyright.
   * Fix cross building by setting the CC detected in configure in the
