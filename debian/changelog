@@ -1,4 +1,4 @@
-arj (3.10.22-16) UNRELEASED; urgency=medium
+arj (3.10.22-16) unstable; urgency=medium
 
   * Line-wrap dependency fields.
   * Bump Standards-Version to 4.1.0 (no changes needed).
@@ -16,7 +16,7 @@ arj (3.10.22-16) UNRELEASED; urgency=medium
     not running a build tool compiled for the host.
     Thanks to Helmut Grohne <helmut@subdivi.de>. Closes: #875568
 
- -- Guillem Jover <guillem@debian.org>  Thu, 17 Aug 2017 23:17:28 +0200
+ -- Guillem Jover <guillem@debian.org>  Fri, 15 Sep 2017 09:32:49 +0200
 
 arj (3.10.22-15) unstable; urgency=medium
 
