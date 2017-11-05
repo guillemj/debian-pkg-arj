@@ -1,6 +1,7 @@
 arj (3.10.22-17) UNRELEASED; urgency=medium
 
   * Bump Standards-Version to 4.1.1 (no changes needed).
+  * Switch sf.net URLs from http to https.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 05 Nov 2017 04:55:36 +0100
 

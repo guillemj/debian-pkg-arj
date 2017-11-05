@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Guillem Jover <guillem@debian.org>
 Uploaders: Ola Lundqvist <opal@debian.org>
-Homepage: http://sf.net/projects/arj/
+Homepage: https://sf.net/projects/arj/
 Vcs-Browser: https://git.hadrons.org/cgit/debian/pkgs/arj.git
 Vcs-Git: https://git.hadrons.org/git/debian/pkgs/arj.git
 Standards-Version: 4.1.1
