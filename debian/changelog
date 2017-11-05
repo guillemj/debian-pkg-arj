@@ -1,4 +1,4 @@
-arj (3.10.22-17) UNRELEASED; urgency=medium
+arj (3.10.22-17) unstable; urgency=medium
 
   * Bump Standards-Version to 4.1.1 (no changes needed).
   * Switch sf.net URLs from http to https.
@@ -6,7 +6,7 @@ arj (3.10.22-17) UNRELEASED; urgency=medium
   * Merge debian/rules binary-common target into binary-arch.
   * Switch to debian/watch format version 4.
 
- -- Guillem Jover <guillem@debian.org>  Sun, 05 Nov 2017 04:55:36 +0100
+ -- Guillem Jover <guillem@debian.org>  Sun, 05 Nov 2017 05:00:15 +0100
 
 arj (3.10.22-16) unstable; urgency=medium
 
