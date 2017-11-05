@@ -4,6 +4,7 @@ arj (3.10.22-17) UNRELEASED; urgency=medium
   * Switch sf.net URLs from http to https.
   * Switch from broken getconf cross interface to future=+lfs build flags.
   * Merge debian/rules binary-common target into binary-arch.
+  * Switch to debian/watch format version 4.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 05 Nov 2017 04:55:36 +0100
 
