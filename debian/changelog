@@ -2,6 +2,7 @@ arj (3.10.22-18) UNRELEASED; urgency=medium
 
   * Fix typo in package description.
   * Namespace debhelper files with package name.
+  * Add spaces around make variable assignments in debian/rules.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 07 Oct 2018 18:55:16 +0200
 
