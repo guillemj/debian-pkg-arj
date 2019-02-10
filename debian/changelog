@@ -4,6 +4,7 @@ arj (3.10.22-18) UNRELEASED; urgency=medium
   * Namespace debhelper files with package name.
   * Add spaces around make variable assignments in debian/rules.
   * Add comment on Build-Depends for the versioned dpkg-dev requirement.
+  * Switch to debhelper compatibility level 11.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 07 Oct 2018 18:55:16 +0200
 
