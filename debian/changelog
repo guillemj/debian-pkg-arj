@@ -1,4 +1,4 @@
-arj (3.10.22-18) UNRELEASED; urgency=medium
+arj (3.10.22-18) unstable; urgency=medium
 
   * Fix typo in package description.
   * Namespace debhelper files with package name.
@@ -7,7 +7,7 @@ arj (3.10.22-18) UNRELEASED; urgency=medium
   * Switch to debhelper compatibility level 11.
   * Bump Standards-Version to 4.3.0 (no changes needed).
 
- -- Guillem Jover <guillem@debian.org>  Sun, 07 Oct 2018 18:55:16 +0200
+ -- Guillem Jover <guillem@debian.org>  Sun, 10 Feb 2019 17:09:19 +0100
 
 arj (3.10.22-17) unstable; urgency=medium
 
