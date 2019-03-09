@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+hier="$AUTOPKGTEST_TMP/hier"
+arch="$AUTOPKGTEST_TMP/test.arj"
+
+mkdir -p "$hier/aa/bb/cc"
+mkdir -p "$hier/zz/yy/xx"
+echo "file-base" >"$hier/file"
+echo "file-down" >"$hier/aa/file"
+echo "file-deep" >"$hier/zz/yy/file"
+
+arj a -r -a -e1 "$arch" "$hier"
+
+arj t "$arch"
+
+mkdir -p "$hier-out"
+arj x -y "$arch" "$hier-out"
+
+diff -Naur "$hier" "$hier-out" >&2
