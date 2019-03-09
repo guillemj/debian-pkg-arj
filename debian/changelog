@@ -1,3 +1,11 @@
+arj (3.10.22-19) UNRELEASED; urgency=medium
+
+  * Use the -hdo debug switch for the help.arj embedded into the arj program
+    to set the archive timestamp based on the SOURCE_DATE_EPOCH. This makes
+    the binary package reproducible.
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 09 Mar 2019 04:45:41 +0100
+
 arj (3.10.22-18) unstable; urgency=medium
 
   * Fix typo in package description.

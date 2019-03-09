@@ -1,0 +1,28 @@
+Author: Guillem Jover <guillem@debian.org
+Description: Force the timestamp for the help.arj embedded in the executable
+ to the date from SOURCE_DATE_EPOCH, to generate a reproducible archive.
+
+---
+ gnu/makefile.in |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- a/gnu/makefile.in
++++ b/gnu/makefile.in
+@@ -62,6 +62,8 @@ else
+ STRIP = :
+ endif
+ 
++ARJ_TIMESTAMP = $(shell date -d '@$(SOURCE_DATE_EPOCH)' '+%Y%m%d%H%S')
++
+ ALL_CFLAGS += @CPPFLAGS@ $(CPPFLAGS) @CFLAGS@ $(CFLAGS)
+ 
+ # Build Installation paths
+@@ -364,7 +366,7 @@ $(ARJ_DIR)/arj$x: $(ARJ_OBJS) \
+ 	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(ARJSFXV_DIR)/arjsfxv$x
+ 	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(SFXSTUB_DIR)/sfxstub$x
+ 	rm -f $(BASEDIR)/help.arj
+-	$(ARJ_DIR)/arj$x a $(BASEDIR)/help.arj -+ -t1f -2e -e -jm -jh65535 -jt $(RES_DIR)/$(LOCALE)/arj?.txt
++	$(ARJ_DIR)/arj$x a $(BASEDIR)/help.arj -+ -t1f -2e -e -jm -jh65535 -jt -hdo$(ARJ_TIMESTAMP) $(RES_DIR)/$(LOCALE)/arj?.txt
+ 	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(BASEDIR)/help.arj
+ 	$(TOOLS_DIR)/postproc $@
+ 
