@@ -1,6 +1,7 @@
 arj (3.10.22-20) UNRELEASED; urgency=medium
 
   * Change -hdo debug switch to also set the files atime and ctime.
+  * Extend autopkgtest, and remove superficial restriction.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 11 Mar 2019 00:14:38 +0100
 

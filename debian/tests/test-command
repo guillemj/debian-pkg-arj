@@ -5,17 +5,46 @@ set -e
 hier="$AUTOPKGTEST_TMP/hier"
 arch="$AUTOPKGTEST_TMP/test.arj"
 
+echo "Create a test hierarchy."
 mkdir -p "$hier/aa/bb/cc"
 mkdir -p "$hier/zz/yy/xx"
 echo "file-base" >"$hier/file"
 echo "file-down" >"$hier/aa/file"
 echo "file-deep" >"$hier/zz/yy/file"
 
-arj a -r -a -e1 "$arch" "$hier"
+echo "Check the integrity of arj itself."
+arj i
 
+echo "Check adding and extracting files to/from an archive match."
+rm -rf "$hier-out"
+mkdir -p "$hier-out"
+arj a -r -a -e1 "$arch" "$hier"
+arj x -y "$arch" "$hier-out"
+diff -Naur "$hier" "$hier-out" >&2
+
+echo "Check testing the integrity of an archive."
 arj t "$arch"
 
+echo "Check refreshing files in an archive."
+echo "file-mod" >"$hier/aa/file"
+rm -rf "$hier-out"
 mkdir -p "$hier-out"
+arj f -r -a -e1 -f3 "$arch" "$hier"
 arj x -y "$arch" "$hier-out"
+diff -Naur "$hier" "$hier-out" >&2
 
+echo "Check renaming files from an archive."
+mv "$hier/aa/file" "$hier/aa/new-file"
+rm -rf "$hier-out"
+mkdir -p "$hier-out"
+echo "aa/new-file" | arj n "$arch" aa/file
+arj x -y "$arch" "$hier-out"
+diff -Naur "$hier" "$hier-out" >&2
+
+echo "Check deleting files from an archive."
+rm "$hier/aa/new-file"
+rm -rf "$hier-out"
+mkdir -p "$hier-out"
+arj d -jf -e1 "$arch" aa/new-file
+arj x -y "$arch" "$hier-out"
 diff -Naur "$hier" "$hier-out" >&2
