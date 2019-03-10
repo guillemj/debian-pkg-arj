@@ -1,6 +1,7 @@
 Author: Guillem Jover <guillem@debian.org
 Description: Force the timestamp for the help.arj embedded in the executable
  to the date from SOURCE_DATE_EPOCH, to generate a reproducible archive.
+ Make the -hdo option also affect the stored atime and ctime.
 
 ---
  gnu/makefile.in |    4 +++-
@@ -26,3 +27,24 @@ Description: Force the timestamp for the help.arj embedded in the executable
  	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(BASEDIR)/help.arj
  	$(TOOLS_DIR)/postproc $@
  
+--- a/arj_arcv.c
++++ b/arj_arcv.c
+@@ -726,8 +726,16 @@ void create_header(int first)
+   else
+   {
+    hput_longword(resume_position);
+-   hput_longword(ts_native(&atime_stamp, host_os));
+-   hput_longword(ts_native(&ctime_stamp, host_os));
++   if(ts_valid(secondary_ftime))
++   {
++    hput_longword(ts_native(&secondary_ftime, host_os));
++    hput_longword(ts_native(&secondary_ftime, host_os));
++   }
++   else
++   {
++    hput_longword(ts_native(&atime_stamp, host_os));
++    hput_longword(ts_native(&ctime_stamp, host_os));
++   }
+    hput_longword(0L);
+   }
+  }
