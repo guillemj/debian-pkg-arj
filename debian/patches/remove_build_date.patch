@@ -55,7 +55,7 @@ Thus this patch opts for removing the dubious feature.
   }
 --- a/gnu/makefile.in
 +++ b/gnu/makefile.in
-@@ -165,13 +165,13 @@ $(SFXSTUB_DIR)/%.o: $(SRC_DIR)/%.c
+@@ -164,13 +164,13 @@ $(SFXSTUB_DIR)/%.o: $(SRC_DIR)/%.c
  # Main dependency tree
  #
  
@@ -71,7 +71,7 @@ Thus this patch opts for removing the dubious feature.
  	$(MAKE) msg-headers
  	$(MAKE) depends
  	$(MAKE) do-all
-@@ -207,22 +207,12 @@ endif
+@@ -206,22 +206,12 @@ endif
  depends: $(DEPS)
  
  #
@@ -94,7 +94,7 @@ Thus this patch opts for removing the dubious feature.
  MAKE_KEY_OBJS = $(patsubst %,$(TOOLS_DIR)/%, \
                  make_key.o crc32.o misc.o arj_proc.o arjsec_h.o arjsec_l.o)
  
-@@ -238,9 +228,6 @@ PACKAGER_OBJS = $(patsubst %,$(TOOLS_DIR
+@@ -237,9 +227,6 @@ PACKAGER_OBJS = $(patsubst %,$(TOOLS_DIR
  $(TOOLS_DIR)/msgbind$x: $(MSGBIND_OBJS)
  	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(MSGBIND_OBJS) $(LIBS)
  
@@ -104,7 +104,7 @@ Thus this patch opts for removing the dubious feature.
  $(TOOLS_DIR)/make_key$x: $(MAKE_KEY_OBJS)
  	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(MAKE_KEY_OBJS) $(LIBS)
  
-@@ -253,10 +240,6 @@ $(TOOLS_DIR)/join$x: $(JOIN_OBJS)
+@@ -252,10 +239,6 @@ $(TOOLS_DIR)/join$x: $(JOIN_OBJS)
  $(TOOLS_DIR)/packager$x: $(PACKAGER_OBJS)
  	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(PACKAGER_OBJS) $(LIBS)
  
@@ -115,7 +115,7 @@ Thus this patch opts for removing the dubious feature.
  # And this one explicitly specifies that chk_fmsg depends on individual files
  $(ARJ_DIR)/chk_fmsg.o: $(SRC_DIR)/chk_fmsg.c $(BASEDIR)/fmsg_arj.c
  $(ARJSFX_DIR)/chk_fmsg.o: $(SRC_DIR)/chk_fmsg.c $(BASEDIR)/fmsg_sfx.c
-@@ -301,7 +284,7 @@ $(BASEDIR)/nmsg_stb.c $(BASEDIR)/msg_stb
+@@ -300,7 +283,7 @@ $(BASEDIR)/nmsg_stb.c $(BASEDIR)/msg_stb
  #
  
  ARJSFXV_OBJS = $(patsubst %,$(ARJSFXV_DIR)/%, \
@@ -124,7 +124,7 @@ Thus this patch opts for removing the dubious feature.
  	       decode.o arjsfx.o fardata.o arj_user.o arj_arcv.o arj_file.o \
  	       crc32.o misc.o debug.o arj_proc.o environ.o ea_mgr.o ntstream.o \
  	       uxspec.o ext_hdr.o arjtypes.o exe_sear.o chk_fmsg.o filelist.o \
-@@ -357,7 +340,7 @@ $(BASEDIR)/msg_sfj.h: $(TOOLS_DIR)/msgbi
+@@ -356,7 +339,7 @@ $(BASEDIR)/msg_sfj.h: $(TOOLS_DIR)/msgbi
  #
  
  ARJ_OBJS = $(patsubst %,$(ARJ_DIR)/%, \
@@ -133,7 +133,7 @@ Thus this patch opts for removing the dubious feature.
  	   nmsg_arj.o integr.o file_reg.o decode.o encode.o \
  	   arj.o enc_gwy.o fardata.o arj_user.o arj_arcv.o \
  	   arj_file.o crc32.o misc.o debug.o arj_proc.o \
-@@ -394,7 +377,7 @@ $(BASEDIR)/msg_arj.h: $(TOOLS_DIR)/msgbi
+@@ -393,7 +376,7 @@ $(BASEDIR)/msg_arj.h: $(TOOLS_DIR)/msgbi
  #
  
  REARJ_OBJS = $(patsubst %,$(REARJ_DIR)/%, \

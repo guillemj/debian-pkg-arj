@@ -1,3 +1,10 @@
+arj (3.10.22-21) UNRELEASED; urgency=medium
+
+  * Instead of fixing up unreproducible metadata in the help.arj embedded
+    into the arj program, just stop recording its file attributes altogether.
+
+ -- Guillem Jover <guillem@debian.org>  Sun, 14 Apr 2019 01:13:09 +0200
+
 arj (3.10.22-20) unstable; urgency=medium
 
   * Change -hdo debug switch to also set the files atime and ctime.
