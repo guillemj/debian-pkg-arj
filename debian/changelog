@@ -1,4 +1,4 @@
-arj (3.10.22-21) UNRELEASED; urgency=medium
+arj (3.10.22-21) unstable; urgency=medium
 
   * Instead of fixing up unreproducible metadata in the help.arj embedded
     into the arj program, just stop recording its file attributes altogether.
@@ -28,7 +28,7 @@ arj (3.10.22-21) UNRELEASED; urgency=medium
   * Switch to debhelper compatibility level 12.
   * Switch from debian/compat to debhelper-commpat in Build-Depends.
 
- -- Guillem Jover <guillem@debian.org>  Sun, 14 Apr 2019 01:13:09 +0200
+ -- Guillem Jover <guillem@debian.org>  Thu, 11 Jul 2019 10:07:18 +0200
 
 arj (3.10.22-20) unstable; urgency=medium
 
