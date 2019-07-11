@@ -25,6 +25,8 @@ arj (3.10.22-21) UNRELEASED; urgency=medium
     - Match on .xz in addition to .gz, even if it's unlikely upstream will
       release such a thing.
   * Switch to Standards-Version 4.4.0 (no changes needed).
+  * Switch to debhelper compatibility level 12.
+  * Switch from debian/compat to debhelper-commpat in Build-Depends.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 14 Apr 2019 01:13:09 +0200
 

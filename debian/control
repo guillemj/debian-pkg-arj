@@ -11,7 +11,7 @@ Rules-Requires-Root: no
 Build-Depends:
 # Needed for lfs build-flags feature.
  dpkg-dev (>= 1.19.0),
- debhelper (>= 11),
+ debhelper-compat (= 12),
 
 Package: arj
 Architecture: any
