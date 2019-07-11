@@ -1,22 +1,163 @@
-Description: Fix cross builds, by setting the CC detected in configure in
- the generated makefile.
-Author: Helmut Grohne <helmut@subdivi.de>
+Description: Fix cross builds
+ Set the CC detected in configure in the generated makefile.
+ Thanks to Helmut Grohne <helmut@subdivi.de>
+ .
+ Set CROSS_BUILDING at configure time.
+ Set CC_FOR_BUILD in configure and use it in the makefile to build any tool
+ executed at build time.
+ When cross-building build another arj program for the build architecture.
+Author: Guillem Jover <guillem@debian.org>
 Origin: vendor
 Forwarded: no
 Bug-Debian: 875567
-Last-Update: 2017-09-12
+Last-Update: 2019-07-11
 
 ---
- gnu/makefile.in |    1 +
- 1 file changed, 1 insertion(+)
+ gnu/configure.in |    6 ++++++
+ gnu/makefile.in  |   45 +++++++++++++++++++++++++++++++++++++--------
+ 2 files changed, 43 insertions(+), 8 deletions(-)
 
 --- a/gnu/makefile.in
 +++ b/gnu/makefile.in
-@@ -16,6 +16,7 @@ REGISTER = @REGISTER@
+@@ -13,9 +13,12 @@ SHELL = @CONFIG_SHELL@
+ DYN_LIBS = @DYN_LIBS@
+ LIBS = @LIBS@
+ REGISTER = @REGISTER@
++CROSS_BUILDING = @CROSS_BUILDING@
  
  # Programs
  
 +CC = @CC@
++CC_FOR_BUILD = @CC_FOR_BUILD@
  INSTALL = @INSTALL@
  INSTALL_DIR = @INSTALL@ -d -m 755
  INSTALL_DATA = @INSTALL_DATA@
+@@ -56,7 +59,7 @@ DEBUG_SM = r
+ endif
+ 
+ ifdef BUILD_STRIP
+-STRIP = strip --strip-unneeded --remove-section=.comment --remove-section=.note
++STRIP = @STRIP@ --strip-unneeded --remove-section=.comment --remove-section=.note
+ else
+ STRIP = :
+ endif
+@@ -75,6 +78,9 @@ RESFILE = $(RES_DIR)/resource.txt
+ 
+ TOOLS_DIR = $(BASEDIR)/tools
+ ARJ_DIR = $(BASEDIR)/arj
++ifdef CROSS_BUILDING
++ARJ_FOR_BUILD_DIR = $(BASEDIR)/arj-for-build
++endif
+ ARJSFXV_DIR = $(BASEDIR)/arjsfxv
+ ARJSFX_DIR = $(BASEDIR)/arjsfx
+ ARJSFXJR_DIR = $(BASEDIR)/arjsfxjr
+@@ -108,6 +114,11 @@ SFXSTUB_COPT = -DSFXSTUB $(COPT)
+ $(ARJ_DIR)/%.o: $(BASEDIR)/%.c
+ 	$(CC) $(COPT) -o$@ $<
+ 
++ifdef CROSS_BUILDING
++$(ARJ_FOR_BUILD_DIR)/%.o: $(BASEDIR)/%.c
++	$(CC_FOR_BUILD) $(COPT) -o$@ $<
++endif
++
+ $(ARJSFX_DIR)/%.o: $(BASEDIR)/%.c
+ 	$(CC) $(COPT) -o$@ $<
+ 
+@@ -133,11 +144,16 @@ $(ARJDISP_DIR)/%.o: $(BASEDIR)/%.c
+ 	$(CC) $(COPT) -o$@ $<
+ 
+ $(TOOLS_DIR)/%.o: $(SRC_DIR)/%.c
+-	$(CC) $(STD_COPT) -o$@ $<
++	$(CC_FOR_BUILD) $(STD_COPT) -o$@ $<
+ 
+ $(ARJ_DIR)/%.o: $(SRC_DIR)/%.c
+ 	$(CC) $(ARJ_COPT) -o$@ $<
+ 
++ifdef CROSS_BUILDING
++$(ARJ_FOR_BUILD_DIR)/%.o: $(SRC_DIR)/%.c
++	$(CC_FOR_BUILD) $(ARJ_COPT) -o$@ $<
++endif
++
+ $(ARJSFXV_DIR)/%.o: $(SRC_DIR)/%.c
+ 	$(CC) $(ARJSFXV_COPT) -o$@ $<
+ 
+@@ -227,19 +243,19 @@ PACKAGER_OBJS = $(patsubst %,$(TOOLS_DIR
+ 		filemode.o packager.o arjdata.o)
+ 
+ $(TOOLS_DIR)/msgbind$x: $(MSGBIND_OBJS)
+-	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(MSGBIND_OBJS) $(LIBS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(MSGBIND_OBJS) $(LIBS)
+ 
+ $(TOOLS_DIR)/make_key$x: $(MAKE_KEY_OBJS)
+-	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(MAKE_KEY_OBJS) $(LIBS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(MAKE_KEY_OBJS) $(LIBS)
+ 
+ $(TOOLS_DIR)/postproc$x: $(POSTPROC_OBJS)
+-	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(POSTPROC_OBJS) $(LIBS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(POSTPROC_OBJS) $(LIBS)
+ 
+ $(TOOLS_DIR)/join$x: $(JOIN_OBJS)
+-	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(JOIN_OBJS) $(LIBS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(JOIN_OBJS) $(LIBS)
+ 
+ $(TOOLS_DIR)/packager$x: $(PACKAGER_OBJS)
+-	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(PACKAGER_OBJS) $(LIBS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(PACKAGER_OBJS) $(LIBS)
+ 
+ # And this one explicitly specifies that chk_fmsg depends on individual files
+ $(ARJ_DIR)/chk_fmsg.o: $(SRC_DIR)/chk_fmsg.c $(BASEDIR)/fmsg_arj.c
+@@ -350,7 +366,19 @@ ARJ_OBJS = $(patsubst %,$(ARJ_DIR)/%, \
+ 	   crc16tab.o recovery.o gost.o gost40.o gost_t.o \
+ 	   externs.o)
+ 
++ifdef CROSS_BUILDING
++ARJ_FOR_BUILD_PROG = $(ARJ_FOR_BUILD_DIR)/arj$x
++ARJ_FOR_BUILD_OBJS = $(patsubst %/$(ARJ_DIR),$(ARJ_FOR_BUILD_DIR)/%,$(ARJ_OBJS))
++ARJ_FOR_BUILD_DEP = $(ARJ_FOR_BUILD_PROG)
++
++$(ARJ_FOR_BUILD_DIR)/arj$x: $(ARJ_FOR_BUILD_OBJS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(ARJ_FOR_BUILD_OBJS) $(LIBS) $(DYN_LIBS)
++else
++ARJ_FOR_BUILD_PROG = $(ARJ_DIR)/arj$x
++endif
++
+ $(ARJ_DIR)/arj$x: $(ARJ_OBJS) \
++		  $(ARJ_FOR_BUILD_DEP) \
+ 		  $(RES_DIR)/$(LOCALE)/arjl.txt $(RES_DIR)/$(LOCALE)/arjs.txt \
+ 		  $(TOOLS_DIR)/join$x \
+ 		  $(TOOLS_DIR)/postproc$x \
+@@ -365,7 +393,7 @@ $(ARJ_DIR)/arj$x: $(ARJ_OBJS) \
+ 	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(ARJSFXV_DIR)/arjsfxv$x
+ 	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(SFXSTUB_DIR)/sfxstub$x
+ 	rm -f $(BASEDIR)/help.arj
+-	$(ARJ_DIR)/arj$x a $(BASEDIR)/help.arj -+ -t1f -2d -e -jm -jh65535 -jt -hdo$(ARJ_TIMESTAMP) $(RES_DIR)/$(LOCALE)/arj?.txt
++	$(ARJ_FOR_BUILD_PROG) a $(BASEDIR)/help.arj -+ -t1f -2d -e -jm -jh65535 -jt -hdo$(ARJ_TIMESTAMP) $(RES_DIR)/$(LOCALE)/arj?.txt
+ 	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(BASEDIR)/help.arj
+ 	$(TOOLS_DIR)/postproc $@
+ 
+@@ -440,6 +468,7 @@ prepare:
+ 	-mkdir -p $(ARJSFX_DIR)
+ 	-mkdir -p $(ARJSFXJR_DIR)
+ 	-mkdir -p $(ARJ_DIR)
++	-mkdir -p $(ARJ_FOR_BUILD_DIR)
+ 	-mkdir -p $(REARJ_DIR)
+ 	-mkdir -p $(REGISTER_DIR)
+ 	-mkdir -p $(ARJDISP_DIR)
+--- a/gnu/configure.in
++++ b/gnu/configure.in
+@@ -16,9 +16,15 @@ AC_CONFIG_HEADER([../c_defs.h:config.h.i
+ 
+ dnl Checks for the canonical system name
+ AC_CANONICAL_HOST
++AS_IF([test "$host" != "$build"], [
++  AC_SUBST([CROSS_BUILDING], [yes])
++])
++CC_FOR_BUILD=${CC_FOR_BUILD:-gcc}
++AC_SUBST([CC_FOR_BUILD])
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
++AC_CHECK_TOOL([STRIP], [strip])
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC

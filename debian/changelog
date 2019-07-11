@@ -6,6 +6,19 @@ arj (3.10.22-21) UNRELEASED; urgency=medium
     - Rename conf_gnu_type to confflags.
     - Fold DEBUG and STRIP variables into a single buildvars, so that we do
       not stomp over make variables with incompatible semantics.
+  * Fix cross-building support:
+    - Set CROSS_BUILDING variable during configure.
+    - Set CC_FOR_BUILD variable during configure.
+    - Check for a strip build tool during configure, and use that instead of
+      hardcoding "strip" in the makefile.
+    - Use CC_FOR_BUILD for all tools executed at build time.
+    - When cross-building build an additional arj program for the build
+      architecture, so that we can execute it to compress the help.arj that
+      we embed into the host arj.
+    - Include dpkg's buildtools.mk and pass CC and CC_FOR_BUILD to the build
+      system.
+    - Remove now obsolete comment about upstream build system not supporting
+      cross-building.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 14 Apr 2019 01:13:09 +0200
 

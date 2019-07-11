@@ -6,15 +6,16 @@
 
 DEB_BUILD_MAINT_OPTIONS = hardening=+all future=+lfs
 DEB_CFLAGS_MAINT_APPEND = -Wall
+DPKG_EXPORT_BUILDTOOLS = yes
 
 include /usr/share/dpkg/default.mk
+include /usr/share/dpkg/buildtools.mk
 
 DESTDIR = $(CURDIR)/debian/arj
 
 INSTALL = install
 INSTALL_DATA = $(INSTALL) -m 644
 
-# XXX: The upstream build system does not support cross-building...
 ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
   confflags += --build $(DEB_HOST_GNU_TYPE)
 else
