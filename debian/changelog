@@ -24,6 +24,7 @@ arj (3.10.22-21) UNRELEASED; urgency=medium
     - Remove outdated heading field titles.
     - Match on .xz in addition to .gz, even if it's unlikely upstream will
       release such a thing.
+  * Switch to Standards-Version 4.4.0 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Sun, 14 Apr 2019 01:13:09 +0200
 
