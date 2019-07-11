@@ -2,6 +2,8 @@ arj (3.10.22-21) UNRELEASED; urgency=medium
 
   * Instead of fixing up unreproducible metadata in the help.arj embedded
     into the arj program, just stop recording its file attributes altogether.
+  * Update debian/rules:
+    - Rename conf_gnu_type to confflags.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 14 Apr 2019 01:13:09 +0200
 

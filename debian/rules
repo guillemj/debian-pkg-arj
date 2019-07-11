@@ -16,9 +16,9 @@ INSTALL_DATA = $(INSTALL) -m 644
 
 # XXX: The upstream build system does not support cross-building...
 ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
-  conf_gnu_type += --build $(DEB_HOST_GNU_TYPE)
+  confflags += --build $(DEB_HOST_GNU_TYPE)
 else
-  conf_gnu_type += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+  confflags += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
 endif
 
 ifneq (,$(filter debug,$(DEB_BUILD_OPTIONS)))
@@ -39,7 +39,7 @@ gnu/config.status: gnu/configure
 	dh_update_autotools_config
 	
 	cd gnu && ./configure \
-	  $(conf_gnu_type) \
+	  $(confflags) \
 	  --prefix=/usr \
 	  --mandir=\$${prefix}/share/man
 
