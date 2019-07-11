@@ -22,11 +22,11 @@ else
 endif
 
 ifneq (,$(filter debug,$(DEB_BUILD_OPTIONS)))
-	DEBUG = "DEBUG=1"
+  buildvars += "DEBUG=1"
 endif
 
 ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
-	STRIP = "BUILD_STRIP=1"
+  buildvars += "BUILD_STRIP=1"
 endif
 
 gnu/configure: gnu/configure.in
@@ -48,7 +48,7 @@ build-indep:
 build-arch: gnu/config.status
 	dh_testdir
 	
-	$(MAKE) $(DEBUG) $(STRIP)\
+	$(MAKE) $(buildvars) CC=$(CC) CC_FOR_BUILD=$(CC_FOR_BUILD) \
 	  CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)"
 
 build: build-arch build-indep
