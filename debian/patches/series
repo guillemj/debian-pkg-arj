@@ -19,3 +19,4 @@ out-of-bounds-read.patch
 remove_build_date.patch
 reproducible_help_archive.patch
 gnu_build_cross.patch
+fix-time_t-usage.patch

@@ -2,6 +2,9 @@ arj (3.10.22-22) UNRELEASED; urgency=medium
 
   * Set TZ to UTC0 for both date and arj calls when dealing with the help.arj
     embedded into arj itself, so that we finally get reproducible output.
+  * Change several variables from unsigned long to time_t, to pass
+    appropriate pointers when calling localtime() or gmtime(), which fixes
+    various segfaults on x32.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 11 Aug 2019 04:34:50 +0200
 
