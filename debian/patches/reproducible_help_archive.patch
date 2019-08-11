@@ -15,7 +15,7 @@ Description: Force the timestamp for the help.arj embedded in the executable
  STRIP = :
  endif
  
-+ARJ_TIMESTAMP = $(shell date -d '@$(SOURCE_DATE_EPOCH)' '+%Y%m%d%H%S')
++ARJ_TIMESTAMP = $(shell TZ=UTC0 date -d '@$(SOURCE_DATE_EPOCH)' '+%Y%m%d%H%S')
 +
  ALL_CFLAGS += @CPPFLAGS@ $(CPPFLAGS) @CFLAGS@ $(CFLAGS)
  
@@ -25,7 +25,7 @@ Description: Force the timestamp for the help.arj embedded in the executable
  	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(SFXSTUB_DIR)/sfxstub$x
  	rm -f $(BASEDIR)/help.arj
 -	$(ARJ_DIR)/arj$x a $(BASEDIR)/help.arj -+ -t1f -2e -e -jm -jh65535 -jt $(RES_DIR)/$(LOCALE)/arj?.txt
-+	$(ARJ_DIR)/arj$x a $(BASEDIR)/help.arj -+ -t1f -2d -e -jm -jh65535 -jt -hdo$(ARJ_TIMESTAMP) $(RES_DIR)/$(LOCALE)/arj?.txt
++	TZ=UTC0 $(ARJ_DIR)/arj$x a $(BASEDIR)/help.arj -+ -t1f -2d -e -jm -jh65535 -jt -hdo$(ARJ_TIMESTAMP) $(RES_DIR)/$(LOCALE)/arj?.txt
  	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(BASEDIR)/help.arj
  	$(TOOLS_DIR)/postproc $@
  

@@ -1,3 +1,10 @@
+arj (3.10.22-22) UNRELEASED; urgency=medium
+
+  * Set TZ to UTC0 for both date and arj calls when dealing with the help.arj
+    embedded into arj itself, so that we finally get reproducible output.
+
+ -- Guillem Jover <guillem@debian.org>  Sun, 11 Aug 2019 04:34:50 +0200
+
 arj (3.10.22-21) unstable; urgency=medium
 
   * Instead of fixing up unreproducible metadata in the help.arj embedded

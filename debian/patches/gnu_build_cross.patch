@@ -130,8 +130,8 @@ Last-Update: 2019-07-11
  	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(ARJSFXV_DIR)/arjsfxv$x
  	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(SFXSTUB_DIR)/sfxstub$x
  	rm -f $(BASEDIR)/help.arj
--	$(ARJ_DIR)/arj$x a $(BASEDIR)/help.arj -+ -t1f -2d -e -jm -jh65535 -jt -hdo$(ARJ_TIMESTAMP) $(RES_DIR)/$(LOCALE)/arj?.txt
-+	$(ARJ_FOR_BUILD_PROG) a $(BASEDIR)/help.arj -+ -t1f -2d -e -jm -jh65535 -jt -hdo$(ARJ_TIMESTAMP) $(RES_DIR)/$(LOCALE)/arj?.txt
+-	TZ=UTC0 $(ARJ_DIR)/arj$x a $(BASEDIR)/help.arj -+ -t1f -2d -e -jm -jh65535 -jt -hdo$(ARJ_TIMESTAMP) $(RES_DIR)/$(LOCALE)/arj?.txt
++	TZ=UTC0 $(ARJ_FOR_BUILD_PROG) a $(BASEDIR)/help.arj -+ -t1f -2d -e -jm -jh65535 -jt -hdo$(ARJ_TIMESTAMP) $(RES_DIR)/$(LOCALE)/arj?.txt
  	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(BASEDIR)/help.arj
  	$(TOOLS_DIR)/postproc $@
  
