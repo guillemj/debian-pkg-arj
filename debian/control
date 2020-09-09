@@ -9,8 +9,6 @@ Vcs-Git: https://git.hadrons.org/git/debian/pkgs/arj.git
 Standards-Version: 4.4.0
 Rules-Requires-Root: no
 Build-Depends:
-# Needed for lfs build-flags feature.
- dpkg-dev (>= 1.19.0),
  debhelper-compat (= 12),
 
 Package: arj

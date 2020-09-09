@@ -1,3 +1,9 @@
+arj (3.10.22-24) UNRELEASED; urgency=medium
+
+  * Remove dpkg-dev from Build-Depends, satisfied in stable.
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 09 Sep 2020 03:22:45 +0200
+
 arj (3.10.22-23) unstable; urgency=medium
 
   * Fix cross-building by fixing a typo in a Makefile pattern rule.
