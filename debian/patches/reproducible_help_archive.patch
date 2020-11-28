@@ -3,6 +3,7 @@ Description: Force the timestamp for the help.arj embedded in the executable
  to the date from SOURCE_DATE_EPOCH, and use DOS mode, to avoid recording
  the UNIX file attributes, to generate a reproducible archive.
  Make the -hdo option also affect the stored atime and ctime.
+Forwarded: no
 
 ---
  arj_arcv.c      |   12 ++++++++++--

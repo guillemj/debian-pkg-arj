@@ -1,5 +1,6 @@
 From: Helmut Grohne <helmut@subdivi.de>
 Subject: Remove the build date
+Forwarded: no
 Closes: #875568
 
 Presenting the date of the build is of very limited value. It has
