@@ -5,6 +5,7 @@ arj (3.10.22-24) UNRELEASED; urgency=medium
   * Switch to debhelper compatibility level 13.
   * Add missing Forwarded information to patches lacking it.
   * Do not pass ChangeLog to dh_installchangelogs now handled automatically.
+  * Fix configure.in to make it possible to run autoreconf on it.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 09 Sep 2020 03:22:45 +0200
 

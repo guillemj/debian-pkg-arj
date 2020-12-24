@@ -20,3 +20,4 @@ remove_build_date.patch
 reproducible_help_archive.patch
 gnu_build_cross.patch
 fix-time_t-usage.patch
+gnu_build_fix_autoreconf.patch
