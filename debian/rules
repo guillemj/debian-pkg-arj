@@ -1,26 +1,17 @@
 #!/usr/bin/make -f
-# GNU copyright 1997 to 1999 by Joey Hess.
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-DEB_BUILD_MAINT_OPTIONS = hardening=+all future=+lfs
-DEB_CFLAGS_MAINT_APPEND = -Wall
-DPKG_EXPORT_BUILDTOOLS = yes
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all future=+lfs
+export DEB_CFLAGS_MAINT_APPEND = -Wall
 
 include /usr/share/dpkg/default.mk
-include /usr/share/dpkg/buildtools.mk
 
 DESTDIR = $(CURDIR)/debian/arj
 
 INSTALL = install
 INSTALL_DATA = $(INSTALL) -m 644
-
-ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
-  confflags += --build $(DEB_HOST_GNU_TYPE)
-else
-  confflags += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
-endif
 
 ifneq (,$(filter debug,$(DEB_BUILD_OPTIONS)))
   buildvars += "DEBUG=1"
@@ -30,75 +21,27 @@ ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
   buildvars += "BUILD_STRIP=1"
 endif
 
-gnu/configure: gnu/configure.in
-	dh_testdir
-	
-	cd gnu && autoconf -f -i
+%:
+	dh $@
 
-gnu/config.status: gnu/configure
-	dh_testdir
-	dh_update_autotools_config
-	
-	cd gnu && ./configure \
-	  $(confflags) \
-	  --prefix=/usr \
-	  --mandir=\$${prefix}/share/man
+execute_before_dh_auto_clean:
+	rm -f makefile
 
-build-indep:
+override_dh_autoreconf:
+	dh_autoreconf --sourcedirectory=gnu
 
-build-arch: gnu/config.status
-	dh_testdir
-	
-	$(MAKE) $(buildvars) CC=$(CC) CC_FOR_BUILD=$(CC_FOR_BUILD) \
-	  CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)"
+override_dh_auto_configure:
+	dh_auto_configure --sourcedirectory=gnu
 
-build: build-arch build-indep
+override_dh_auto_build:
+	dh_auto_build -- $(buildvars)
 
-clean:
-	dh_testdir
-	dh_testroot
-	
-	[ ! -f GNUmakefile ] || $(MAKE) clean
-	
-	dh_clean
-
-install-arch: build-arch
-	dh_testdir
-	dh_testroot
-	dh_prep
-	dh_installdirs
-	
-	$(MAKE) install DESTDIR=$(DESTDIR)
+execute_after_dh_auto_install:
 	$(INSTALL_DATA) $(CURDIR)/resource/rearj.cfg.example \
 			$(DESTDIR)/etc/rearj.cfg
 
-binary-indep:
-
-binary-arch: install-arch
-	dh_testdir
-	dh_testroot
-	dh_installdocs -a
-	dh_installexamples -a
-	dh_installmenu -a
-	dh_installcron -a
-	dh_installman -a
-	dh_installinfo -a
-	dh_installchangelogs -a
-	dh_link -a
+override_dh_strip:
 	# NOTE: Do not strip here, it is currently done in the upstream build
 	# system, after the linker stage and before preprocessing the binary
 	# files. Otherwise when stripping the self-extracting modules and the
 	# help text are removed.
-#	dh_strip -a
-	dh_compress -a
-	dh_fixperms -a
-	dh_installdeb -a
-	dh_shlibdeps -a
-	dh_gencontrol -a
-	dh_md5sums -a
-	dh_builddeb -a
-
-binary: binary-arch binary-indep
-
-.PHONY: clean configure build build-indep build-arch install-arch
-.PHONY: binary-indep binary-arch binary
