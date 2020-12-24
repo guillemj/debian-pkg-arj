@@ -1,4 +1,4 @@
-arj (3.10.22-24) UNRELEASED; urgency=medium
+arj (3.10.22-24) unstable; urgency=medium
 
   * Remove dpkg-dev from Build-Depends, satisfied in stable.
   * Switch to Standards-Version 4.5.1 (no changes needed).
@@ -10,7 +10,7 @@ arj (3.10.22-24) UNRELEASED; urgency=medium
   * Remove automatically created directories from debian/arj.dirs.
   * Switch to dh sequencer.
 
- -- Guillem Jover <guillem@debian.org>  Wed, 09 Sep 2020 03:22:45 +0200
+ -- Guillem Jover <guillem@debian.org>  Thu, 24 Dec 2020 17:43:18 +0100
 
 arj (3.10.22-23) unstable; urgency=medium
 
