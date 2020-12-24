@@ -6,6 +6,7 @@ arj (3.10.22-24) UNRELEASED; urgency=medium
   * Add missing Forwarded information to patches lacking it.
   * Do not pass ChangeLog to dh_installchangelogs now handled automatically.
   * Fix configure.in to make it possible to run autoreconf on it.
+  * Move files to clean from debian/rules to debian/clean.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 09 Sep 2020 03:22:45 +0200
 

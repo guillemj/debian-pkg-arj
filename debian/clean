@@ -1,0 +1,8 @@
+GNUmakefile
+c_defs.h
+gnu/autom4te.cache/
+gnu/config.cache
+gnu/config.log
+gnu/config.status
+gnu/configure
+makefile

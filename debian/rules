@@ -60,11 +60,6 @@ clean:
 	
 	[ ! -f GNUmakefile ] || $(MAKE) clean
 	
-	-rm -f gnu/configure
-	-rm -f gnu/config.status gnu/config.log gnu/config.cache
-	-rm -rf gnu/autom4te.cache
-	-rm -f c_defs.h GNUmakefile
-	
 	dh_clean
 
 install-arch: build-arch
