@@ -1,6 +1,7 @@
 arj (3.10.22-25) UNRELEASED; urgency=medium
 
   * Switch to Standards-Version 4.6.0 (no changes needed).
+  * Move Source field after Format in debian/copyright.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 22 Jan 2022 21:34:01 +0100
 
