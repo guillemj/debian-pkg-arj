@@ -1,3 +1,9 @@
+arj (3.10.22-25) UNRELEASED; urgency=medium
+
+  * Switch to Standards-Version 4.6.0 (no changes needed).
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 22 Jan 2022 21:34:01 +0100
+
 arj (3.10.22-24) unstable; urgency=medium
 
   * Remove dpkg-dev from Build-Depends, satisfied in stable.
