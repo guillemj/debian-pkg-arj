@@ -1,10 +1,10 @@
-arj (3.10.22-25) UNRELEASED; urgency=medium
+arj (3.10.22-25) unstable; urgency=medium
 
   * Switch to Standards-Version 4.6.0 (no changes needed).
   * Move Source field after Format in debian/copyright.
   * Use spaces around Makefile assignment operator.
 
- -- Guillem Jover <guillem@debian.org>  Sat, 22 Jan 2022 21:34:01 +0100
+ -- Guillem Jover <guillem@debian.org>  Sat, 22 Jan 2022 21:48:20 +0100
 
 arj (3.10.22-24) unstable; urgency=medium
 
