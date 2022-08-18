@@ -1,3 +1,9 @@
+arj (3.10.22-26) UNRELEASED; urgency=medium
+
+  * Add upstream metadata file.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 18 Aug 2022 19:16:11 +0200
+
 arj (3.10.22-25) unstable; urgency=medium
 
   * Switch to Standards-Version 4.6.0 (no changes needed).
