@@ -2,6 +2,7 @@ arj (3.10.22-26) UNRELEASED; urgency=medium
 
   * Add upstream metadata file.
   * Switch to Standards-Version 4.6.2 (no changes needed).
+  * Add source lintian-overrides.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 18 Aug 2022 19:16:11 +0200
 

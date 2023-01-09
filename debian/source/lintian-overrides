@@ -1,0 +1,8 @@
+# Upstream does not sign releases.
+arj: debian-watch-does-not-check-openpgp-signature [debian/watch]
+# Localization catalog.
+arj: very-long-line-length-in-source-file * > 512 [resource/resource.txt:*]
+# Microsoft Visual C Libraries.
+arj: very-long-line-length-in-source-file * > 512 [highc/*.lib:*]
+arj: very-long-line-length-in-source-file * > 512 [vacpp/*.lib:*]
+arj: very-long-line-length-in-source-file * > 512 [wcc2_32/*.lib:*]
