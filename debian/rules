@@ -45,3 +45,6 @@ override_dh_strip:
 	# system, after the linker stage and before preprocessing the binary
 	# files. Otherwise when stripping the self-extracting modules and the
 	# help text are removed.
+
+override_dh_installchangelogs:
+	dh_installchangelogs --no-trim
