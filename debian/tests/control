@@ -1,1 +1,2 @@
-Tests: test-command
+Tests:
+ test-command

@@ -1,3 +1,9 @@
+arj (3.10.22-27) UNRELEASED; urgency=medium
+
+  * Wrap fields in debian/tests/control.
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 17 Jan 2024 02:54:29 +0100
+
 arj (3.10.22-26) unstable; urgency=medium
 
   * Add upstream metadata file.
