@@ -3,6 +3,8 @@ arj (3.10.22-27) UNRELEASED; urgency=medium
   * Wrap fields in debian/tests/control.
   * Switch from future=+lfs to abi=+lfs build flags feature, and Build-Depends
     on dpkg-dev >= 1.22.0.
+  * Fix implicit function declarations by including a missing header and
+    passing -D_GNU_SOURCE=1 in CPPFLAGS.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 17 Jan 2024 02:54:29 +0100
 
