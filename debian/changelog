@@ -1,3 +1,11 @@
+arj (3.10.22-28) UNRELEASED; urgency=medium
+
+  * Update cross-compilation patch to fix cross builds by correctly passing
+    all _FOR_BUILD flags to the CC_FOR_BUILD calls.
+    Based on a patch by Helmut Grohne <helmut@subdivi.de>. Closes: #1083108
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 03 Oct 2024 04:12:50 +0200
+
 arj (3.10.22-27) unstable; urgency=medium
 
   * Wrap fields in debian/tests/control.

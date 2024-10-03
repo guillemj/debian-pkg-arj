@@ -10,7 +10,7 @@ Last-Update: 2020-12-24
 
 --- a/gnu/configure.in
 +++ b/gnu/configure.in
-@@ -99,7 +99,7 @@ esac
+@@ -110,7 +110,7 @@ esac
  
  case $host_cpu in
  alpha*)
@@ -19,7 +19,7 @@ Last-Update: 2020-12-24
  	;;
  sparc*)
  	AC_DEFINE(ALIGN_POINTERS)
-@@ -162,13 +162,14 @@ AC_MSG_RESULT($OUT_DIR)
+@@ -177,13 +177,14 @@ AC_MSG_RESULT($OUT_DIR)
  AC_SUBST(OUT_DIR)
  
  AC_MSG_CHECKING([fnmatch() tolerance to incomplete patterns acting as filenames])
@@ -36,7 +36,7 @@ Last-Update: 2020-12-24
  if test x$TOLERANT_FNMATCH = xyes ; then
    AC_DEFINE(TOLERANT_FNMATCH, 1, [Trust fnmatch() when supplying incomplete patterns])
  fi
-@@ -181,7 +182,7 @@ AC_ARG_ENABLE(color-output,
+@@ -196,7 +197,7 @@ AC_ARG_ENABLE(color-output,
          [color_output=yes],
          [color_output=no])
  AC_MSG_RESULT($color_output)

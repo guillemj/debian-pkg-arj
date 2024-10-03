@@ -1,21 +1,27 @@
 Description: Fix cross builds
  Set the CC detected in configure in the generated makefile.
- Thanks to Helmut Grohne <helmut@subdivi.de>
+ Thanks to Helmut Grohne <helmut@subdivi.de>.
  .
  Set CROSS_BUILDING at configure time.
- Set CC_FOR_BUILD in configure and use it in the makefile to build any tool
- executed at build time.
+ Set CC_FOR_BUILD and LDFLAGS_FOR_BUILD in configure and use it in the
+ makefile to build any tool executed at build time.
  When cross-building build another arj program for the build architecture.
+ .
+ Set ALL_CFLAGS_FOR_BUILD, COPT_FOR_BUILD, STD_COPT_FOR_BUILD and
+ ARJ_COPT_FOR_BUILD in makefile to build any tool executed at build time.
+ Set OS_DEF_FOR_BUILD in configure and use it in the makefile to build any
+ tool executed at build time.
+ Thanks to Helmut Grohne <helmut@subdivi.de>.
 Author: Guillem Jover <guillem@debian.org>
 Origin: vendor
 Forwarded: no
 Bug-Debian: 875567
-Last-Update: 2019-07-11
+Last-Update: 2014-10-02
 
 ---
- gnu/configure.in |    6 ++++++
- gnu/makefile.in  |   45 +++++++++++++++++++++++++++++++++++++--------
- 2 files changed, 43 insertions(+), 8 deletions(-)
+ gnu/configure.in |   22 +++++++++++++++++++
+ gnu/makefile.in  |   63 +++++++++++++++++++++++++++++++++++++++++++++----------
+ 2 files changed, 74 insertions(+), 11 deletions(-)
 
 --- a/gnu/makefile.in
 +++ b/gnu/makefile.in
@@ -32,7 +38,24 @@ Last-Update: 2019-07-11
  INSTALL = @INSTALL@
  INSTALL_DIR = @INSTALL@ -d -m 755
  INSTALL_DATA = @INSTALL_DATA@
-@@ -56,7 +59,7 @@ DEBUG_SM = r
+@@ -38,8 +41,14 @@ ifndef LOCALE
+ LOCALE = en
+ endif
+ 
+-ALL_CFLAGS = -DLOCALE=LANG_$(LOCALE) -DLOCALE_DESC="\"$(LOCALE)\"" \
+-	     -DPKGLIBDIR="\"$(pkglibdir)\"" @OS_DEF@
++COMMON_CFLAGS = \
++	-DLOCALE=LANG_$(LOCALE) \
++	-DLOCALE_DESC="\"$(LOCALE)\"" \
++	-DPKGLIBDIR="\"$(pkglibdir)\"" \
++	# EOL
++
++ALL_CFLAGS = $(COMMON_CFLAGS) @OS_DEF@
++ALL_CFLAGS_FOR_BUILD = $(COMMON_CFLAGS) @OS_DEF_FOR_BUILD@
+ 
+ ifndef COMMERCIAL
+ PACKAGE = s
+@@ -56,7 +65,7 @@ DEBUG_SM = r
  endif
  
  ifdef BUILD_STRIP
@@ -41,7 +64,15 @@ Last-Update: 2019-07-11
  else
  STRIP = :
  endif
-@@ -75,6 +78,9 @@ RESFILE = $(RES_DIR)/resource.txt
+@@ -64,6 +73,7 @@ endif
+ ARJ_TIMESTAMP = $(shell TZ=UTC0 date -d '@$(SOURCE_DATE_EPOCH)' '+%Y%m%d%H%S')
+ 
+ ALL_CFLAGS += @CPPFLAGS@ $(CPPFLAGS) @CFLAGS@ $(CFLAGS)
++ALL_CFLAGS_FOR_BUILD += $(CPPFLAGS_FOR_BUILD) $(CFLAGS_FOR_BUILD)
+ 
+ # Build Installation paths
+ 
+@@ -75,6 +85,9 @@ RESFILE = $(RES_DIR)/resource.txt
  
  TOOLS_DIR = $(BASEDIR)/tools
  ARJ_DIR = $(BASEDIR)/arj
@@ -51,62 +82,82 @@ Last-Update: 2019-07-11
  ARJSFXV_DIR = $(BASEDIR)/arjsfxv
  ARJSFX_DIR = $(BASEDIR)/arjsfx
  ARJSFXJR_DIR = $(BASEDIR)/arjsfxjr
-@@ -108,6 +114,11 @@ SFXSTUB_COPT = -DSFXSTUB $(COPT)
+@@ -87,13 +100,18 @@ SFXSTUB_DIR = $(BASEDIR)/sfxstub
+ # Definitions for compiling submodules
+ 
+ LDFLAGS = @LDFLAGS@ $(ADD_LDFLAGS)
++LDFLAGS_FOR_BUILD = @LDFLAGS_FOR_BUILD@
+ DLL_FLAGS = $(LDFLAGS) @DLL_FLAGS@
+ DLL_CFLAGS = @DLL_CFLAGS@
+ REQUIRES_DEF = @REQUIRES_DEF@
+ 
+-COPT = -c -I@OUT_DIR@ -I$(BASEDIR) -I$(SRC_DIR) $(ALL_CFLAGS)
++COPT_COMMON = -c -I@OUT_DIR@ -I$(BASEDIR) -I$(SRC_DIR)
++COPT = $(COPT_COMMON) $(ALL_CFLAGS)
++COPT_FOR_BUILD = $(COPT_COMMON) $(ALL_CFLAGS_FOR_BUILD)
+ STD_COPT = -DARJUTIL $(COPT)
++STD_COPT_FOR_BUILD = -DARJUTIL $(COPT_FOR_BUILD)
+ ARJ_COPT = -DSFL=4 $(COPT)
++ARJ_COPT_FOR_BUILD = -DSFL=4 $(COPT_FOR_BUILD)
+ ARJSFXV_COPT = -DSFL=3 $(COPT)
+ ARJSFX_COPT = -DSFL=2 $(COPT)
+ ARJSFXJR_COPT = -DSFL=1 $(COPT)
+@@ -108,6 +126,11 @@ SFXSTUB_COPT = -DSFXSTUB $(COPT)
  $(ARJ_DIR)/%.o: $(BASEDIR)/%.c
  	$(CC) $(COPT) -o$@ $<
  
 +ifdef CROSS_BUILDING
 +$(ARJ_FOR_BUILD_DIR)/%.o: $(BASEDIR)/%.c
-+	$(CC_FOR_BUILD) $(COPT) -o$@ $<
++	$(CC_FOR_BUILD) $(COPT_FOR_BUILD) -o$@ $<
 +endif
 +
  $(ARJSFX_DIR)/%.o: $(BASEDIR)/%.c
  	$(CC) $(COPT) -o$@ $<
  
-@@ -133,11 +144,16 @@ $(ARJDISP_DIR)/%.o: $(BASEDIR)/%.c
+@@ -133,11 +156,16 @@ $(ARJDISP_DIR)/%.o: $(BASEDIR)/%.c
  	$(CC) $(COPT) -o$@ $<
  
  $(TOOLS_DIR)/%.o: $(SRC_DIR)/%.c
 -	$(CC) $(STD_COPT) -o$@ $<
-+	$(CC_FOR_BUILD) $(STD_COPT) -o$@ $<
++	$(CC_FOR_BUILD) $(STD_COPT_FOR_BUILD) -o$@ $<
  
  $(ARJ_DIR)/%.o: $(SRC_DIR)/%.c
  	$(CC) $(ARJ_COPT) -o$@ $<
  
 +ifdef CROSS_BUILDING
 +$(ARJ_FOR_BUILD_DIR)/%.o: $(SRC_DIR)/%.c
-+	$(CC_FOR_BUILD) $(ARJ_COPT) -o$@ $<
++	$(CC_FOR_BUILD) $(ARJ_COPT_FOR_BUILD) -o$@ $<
 +endif
 +
  $(ARJSFXV_DIR)/%.o: $(SRC_DIR)/%.c
  	$(CC) $(ARJSFXV_COPT) -o$@ $<
  
-@@ -227,19 +243,19 @@ PACKAGER_OBJS = $(patsubst %,$(TOOLS_DIR
+@@ -227,19 +255,19 @@ PACKAGER_OBJS = $(patsubst %,$(TOOLS_DIR
  		filemode.o packager.o arjdata.o)
  
  $(TOOLS_DIR)/msgbind$x: $(MSGBIND_OBJS)
 -	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(MSGBIND_OBJS) $(LIBS)
-+	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(MSGBIND_OBJS) $(LIBS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS_FOR_BUILD) $(LDFLAGS_FOR_BUILD) -o $@ $(MSGBIND_OBJS) $(LIBS)
  
  $(TOOLS_DIR)/make_key$x: $(MAKE_KEY_OBJS)
 -	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(MAKE_KEY_OBJS) $(LIBS)
-+	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(MAKE_KEY_OBJS) $(LIBS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS_FOR_BUILD) $(LDFLAGS_FOR_BUILD) -o $@ $(MAKE_KEY_OBJS) $(LIBS)
  
  $(TOOLS_DIR)/postproc$x: $(POSTPROC_OBJS)
 -	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(POSTPROC_OBJS) $(LIBS)
-+	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(POSTPROC_OBJS) $(LIBS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS_FOR_BUILD) $(LDFLAGS_FOR_BUILD) -o $@ $(POSTPROC_OBJS) $(LIBS)
  
  $(TOOLS_DIR)/join$x: $(JOIN_OBJS)
 -	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(JOIN_OBJS) $(LIBS)
-+	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(JOIN_OBJS) $(LIBS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS_FOR_BUILD) $(LDFLAGS_FOR_BUILD) -o $@ $(JOIN_OBJS) $(LIBS)
  
  $(TOOLS_DIR)/packager$x: $(PACKAGER_OBJS)
 -	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(PACKAGER_OBJS) $(LIBS)
-+	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(PACKAGER_OBJS) $(LIBS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS_FOR_BUILD) $(LDFLAGS_FOR_BUILD) -o $@ $(PACKAGER_OBJS) $(LIBS)
  
  # And this one explicitly specifies that chk_fmsg depends on individual files
  $(ARJ_DIR)/chk_fmsg.o: $(SRC_DIR)/chk_fmsg.c $(BASEDIR)/fmsg_arj.c
-@@ -350,7 +366,19 @@ ARJ_OBJS = $(patsubst %,$(ARJ_DIR)/%, \
+@@ -350,7 +378,19 @@ ARJ_OBJS = $(patsubst %,$(ARJ_DIR)/%, \
  	   crc16tab.o recovery.o gost.o gost40.o gost_t.o \
  	   externs.o)
  
@@ -116,7 +167,7 @@ Last-Update: 2019-07-11
 +ARJ_FOR_BUILD_DEP = $(ARJ_FOR_BUILD_PROG)
 +
 +$(ARJ_FOR_BUILD_DIR)/arj$x: $(ARJ_FOR_BUILD_OBJS)
-+	$(CC_FOR_BUILD) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(ARJ_FOR_BUILD_OBJS) $(LIBS) $(DYN_LIBS)
++	$(CC_FOR_BUILD) $(ALL_CFLAGS_FOR_BUILD) $(LDFLAGS_FOR_BUILD) -o $@ $(ARJ_FOR_BUILD_OBJS) $(LIBS) $(DYN_LIBS)
 +else
 +ARJ_FOR_BUILD_PROG = $(ARJ_DIR)/arj$x
 +endif
@@ -126,7 +177,7 @@ Last-Update: 2019-07-11
  		  $(RES_DIR)/$(LOCALE)/arjl.txt $(RES_DIR)/$(LOCALE)/arjs.txt \
  		  $(TOOLS_DIR)/join$x \
  		  $(TOOLS_DIR)/postproc$x \
-@@ -365,7 +393,7 @@ $(ARJ_DIR)/arj$x: $(ARJ_OBJS) \
+@@ -365,7 +405,7 @@ $(ARJ_DIR)/arj$x: $(ARJ_OBJS) \
  	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(ARJSFXV_DIR)/arjsfxv$x
  	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(SFXSTUB_DIR)/sfxstub$x
  	rm -f $(BASEDIR)/help.arj
@@ -135,7 +186,7 @@ Last-Update: 2019-07-11
  	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(BASEDIR)/help.arj
  	$(TOOLS_DIR)/postproc $@
  
-@@ -440,6 +468,7 @@ prepare:
+@@ -440,6 +480,7 @@ prepare:
  	-mkdir -p $(ARJSFX_DIR)
  	-mkdir -p $(ARJSFXJR_DIR)
  	-mkdir -p $(ARJ_DIR)
@@ -161,3 +212,40 @@ Last-Update: 2019-07-11
  
  dnl Checks for header files.
  AC_HEADER_STDC
+@@ -90,6 +96,17 @@ os2*)
+ 	OS_DEF="-D_OS2"
+ 	;;
+ esac
++AC_SUBST([LDFLAGS_FOR_BUILD])
++
++OS_DEF_FOR_BUILD="-D_UNIX"
++case $build_os in
++gnu*|linux*|*bsd*|interix3*|*qnx*|*solaris*)
++	;;
++os2*)
++	LDFLAGS_FOR_BUILD="-s"
++	OS_DEF_FOR_BUILD="-D_OS2"
++	;;
++esac
+ 
+ case $host_cpu in
+ alpha*)
+@@ -135,6 +152,10 @@ AC_ARG_ENABLE(libc,
+ 		LDFLAGS="-Zcrtdll $LDFLAGS"
+ 		DLL_FLAGS="-Zcrtdll $DLL_FLAGS"
+ 	 esac
++	 case $build_os in
++	 os2*)
++		LDFLAGS_FOR_BUILD="-Zcrtdll $LDFLAGS_FOR_BUILD"
++	 esac
+ 	])
+ AC_MSG_RESULT($enable_libc)
+ test "$enable_libc" != "no" && AC_DEFINE(LIBC, 1, [Define if dynamic C library may be used])
+@@ -191,6 +212,7 @@ AC_SUBST(DLL_CFLAGS)
+ AC_SUBST(REQUIRES_DEF)
+ AC_SUBST(OS_ID)
+ AC_SUBST(OS_DEF)
++AC_SUBST(OS_DEF_FOR_BUILD)
+ AC_SUBST(LIBS)
+ AC_SUBST(DYN_LIBS)
+ AC_SUBST(LD_STRIP)
