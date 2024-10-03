@@ -1,11 +1,11 @@
-arj (3.10.22-28) UNRELEASED; urgency=medium
+arj (3.10.22-28) unstable; urgency=medium
 
   * Update cross-compilation patch to fix cross builds by correctly passing
     all _FOR_BUILD flags to the CC_FOR_BUILD calls.
     Based on a patch by Helmut Grohne <helmut@subdivi.de>. Closes: #1083108
   * Switch to Standards-Version 4.7.0 (no changes needed).
 
- -- Guillem Jover <guillem@debian.org>  Thu, 03 Oct 2024 04:12:50 +0200
+ -- Guillem Jover <guillem@debian.org>  Thu, 03 Oct 2024 04:17:29 +0200
 
 arj (3.10.22-27) unstable; urgency=medium
 
