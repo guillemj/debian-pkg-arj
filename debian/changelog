@@ -1,3 +1,9 @@
+arj (3.10.22-29) UNRELEASED; urgency=medium
+
+  * Use URL instead of FSF postal address for GPL in debian/copyright.
+
+ -- Guillem Jover <guillem@debian.org>  Mon, 23 Jun 2025 01:33:20 +0200
+
 arj (3.10.22-28) unstable; urgency=medium
 
   * Update cross-compilation patch to fix cross builds by correctly passing
