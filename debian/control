@@ -1,6 +1,5 @@
 Source: arj
 Section: utils
-Priority: optional
 Maintainer: Guillem Jover <guillem@debian.org>
 Uploaders: Ola Lundqvist <opal@debian.org>
 Homepage: https://sf.net/projects/arj/
