@@ -1,3 +1,5 @@
-# You can run the "uscan" command to check for upstream updates and more.
-version=4
-https://sf.net/arj/	arj-(.*)\.tar\.[xg]z	debian	uupdate
+Version: 5
+
+Source: https://sf.net/arj/
+Matching-Pattern: arj-(.*)\.tar\.[xg]z
+Update-Script: uupdate
