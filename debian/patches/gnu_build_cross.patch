@@ -15,7 +15,7 @@ Description: Fix cross builds
 Author: Guillem Jover <guillem@debian.org>
 Origin: vendor
 Forwarded: no
-Bug-Debian: 875567
+Bug-Debian: https://bugs.debian.org/875567
 Last-Update: 2014-10-02
 
 ---

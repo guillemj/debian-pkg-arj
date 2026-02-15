@@ -9,6 +9,7 @@ arj (3.10.22-29) UNRELEASED; urgency=medium
   * Remove very-long-line-length-in-source-file lintian overrides that no
     longer get emitted.
   * Add missing metadata for a patch.
+  * Use an URL for Bugs-Debian field in patch instead of just the number.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 23 Jun 2025 01:33:20 +0200
 
