@@ -1,3 +1,10 @@
+Description: Add missing header to get function prototypes
+ Otherwise gcc now emits errors due to missing function declarations.
+Author: Guillem Jover <guillem@debian.org>
+Origin: vendor
+Forwarded: no
+Last-Update: 2024-05-12
+
 ---
  environ.c |    1 +
  1 file changed, 1 insertion(+)

@@ -8,6 +8,7 @@ arj (3.10.22-29) UNRELEASED; urgency=medium
   * Remove versioned Build-Depends on dpkg-dev, satisfied since Debian trixie.
   * Remove very-long-line-length-in-source-file lintian overrides that no
     longer get emitted.
+  * Add missing metadata for a patch.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 23 Jun 2025 01:33:20 +0200
 
