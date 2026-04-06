@@ -2,6 +2,7 @@ arj (3.10.22-30) UNRELEASED; urgency=medium
 
   * Remove build dependency on debhelper (>= 13.10) implied by
     debhelper-compat (= 13) since Debian bookworm.
+  * Switch to Standards-Version 4.7.4 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Mon, 06 Apr 2026 18:04:43 +0200
 
